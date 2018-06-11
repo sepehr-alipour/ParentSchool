@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">ParentSchool</string>
+    <string name="hint_username">نام کاربری</string>
+    <string name="hint_url">آدرس ورودی</string>
+    <string name="hint_school_name">نام مدرسه</string>
+    <string name="hint_title_message">عنوان پیام</string>
+    <string name="hint_title_activity">عنوان فعالیت</string>
+    <string name="hint_desc_message">متن پیام</string>
+    <string name="hint_desc_activity">توضیحات فعالیت</string>
+    <string name="hint_password">رمز عبور</string>
+    <string name="tab_profile">پروفایل</string>
+    <string name="btn_login">ورود</string>
+    <string name="btn_send">ارسال</string>
+    <string name="btn_send_message">ارسال پیام به</string>
+    <string name="btn_send_activity">تعریف فعالیت برای</string>
+    <string name="btn_save">ذخیره</string>
+    <string name="failed_server">failed</string>
+    <string name="toast_empty_edittext">لطفا نام کاربری و رمز عبور خود را وارد کنید</string>
+
 </resources>

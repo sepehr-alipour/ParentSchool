@@ -1,7 +1,9 @@
-package parent.school.salsal.com;
+package parent.school.salsal.com.view.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import parent.school.salsal.com.R;
 
 public class ActivityMain extends AppCompatActivity {
 
