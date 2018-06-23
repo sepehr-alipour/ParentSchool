@@ -34,10 +34,6 @@ public class ActivityLogin extends BaseActivity implements View.OnClickListener 
     AppCompatEditText edtPassword;
     @BindView(R.id.btnLogin)
     AppCompatButton btnLogin;
-    @BindView(R.id.edtUrl)
-    AppCompatEditText edtUrl;
-    @BindView(R.id.edtSchoolName)
-    AppCompatEditText edtSchoolName;
     private boolean inEdit = false;
 
     @Override
@@ -63,7 +59,6 @@ public class ActivityLogin extends BaseActivity implements View.OnClickListener 
 
         if (TextUtils.isEmpty(edtPassword.getText().toString()) ||
                 TextUtils.isEmpty(edtUsername.getText().toString()) ||
-                TextUtils.isEmpty(edtUrl.getText().toString()) ||
                 TextUtils.isEmpty(edtUsername.getText().toString())) {
 
             Toast.makeText(ActivityLogin.this, getString(R.string.toast_empty_edittext), Toast.LENGTH_SHORT).show();
@@ -71,8 +66,6 @@ public class ActivityLogin extends BaseActivity implements View.OnClickListener 
             final LoginReq loginReq = new LoginReq();
             loginReq.setUsername(edtUsername.getText().toString());
             loginReq.setPassword(edtPassword.getText().toString());
-            loginReq.setConnectionUrl(edtUrl.getText().toString());
-            loginReq.setSchoolName(edtSchoolName.getText().toString());
             if (inEdit) {
               /*  int id = getIntent().getIntExtra(FragmentAddSchool.INTENT_KEY_SCHOOL_ID, -1);
                 loginReq.setId(PreferenceManager.getSchoolConnection(id).getId());

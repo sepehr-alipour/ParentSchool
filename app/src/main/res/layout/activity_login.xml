@@ -34,29 +34,6 @@
                 android:scaleType="centerInside"
                 android:src="@drawable/logo" />
 
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/edtUrl"
-                style="@style/EditTextStyle"
-                android:layout_width="200dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="30dp"
-                android:gravity="right|center"
-                android:hint="@string/hint_url"
-                android:inputType="text"
-                android:paddingTop="50dp"
-                android:text="@string/BASE_URL" />
-
-            <android.support.v7.widget.AppCompatEditText
-                android:id="@+id/edtSchoolName"
-                style="@style/EditTextStyle"
-                android:layout_width="200dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="30dp"
-                android:gravity="right|center"
-                android:hint="@string/hint_school_name"
-                android:inputType="text"
-                android:paddingTop="50dp"
-                android:text="@string/SCHOOL_NAME" />
 
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/edtUsername"
