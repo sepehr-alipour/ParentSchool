@@ -31,6 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/space_10_dp"
                 android:text="انتخاب مدرسه از لیست:"
+                android:hint="@string/hint_school_name"
                 android:textColor="@android:color/white" />
 
             <android.support.v7.widget.AppCompatAutoCompleteTextView
@@ -39,7 +40,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/space_30_dp"
-                android:hint="@string/hiny_school_name"
 
                 android:inputType="textAutoComplete" />
 
