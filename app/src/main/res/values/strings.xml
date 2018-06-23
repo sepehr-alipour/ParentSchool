@@ -16,5 +16,16 @@
     <string name="btn_save">ذخیره</string>
     <string name="failed_server">failed</string>
     <string name="toast_empty_edittext">لطفا نام کاربری و رمز عبور خود را وارد کنید</string>
-
+    <string name="hiny_school_name">نام مدرسه ...</string>
+    <string-array name="schools">
+        <item>مدرسه البرز</item>
+        <item>مدرسه آبان</item>
+        <item>مدرسه حدیث</item>
+        <item>مدرسه الماس</item>
+        <item>مدرسه ادب</item>
+        <item>مدرسه بی ادب</item>
+        <item>مدرست سبحان</item>
+        <item>ابن سینا</item>
+        ...
+    </string-array>
 </resources>

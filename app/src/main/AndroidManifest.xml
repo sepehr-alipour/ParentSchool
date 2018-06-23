@@ -13,17 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.activity.ActivityMain"></activity>
-        <activity android:name=".view.activity.ActivityLogin">
+        <activity android:name=".view.activity.ActivityLogin"></activity>
+        <activity
+            android:name=".view.activity.ActivityLoading"
+            android:theme="@style/Theme.AppCompat.Translucent" />
+        <activity
+            android:name=".view.activity.ActivitySchools"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".view.activity.ActivityLoading"
-            android:theme="@style/Theme.AppCompat.Translucent" />
-        <activity android:name=".view.activity.ActivitySchools"></activity>
     </application>
 
 </manifest>
