@@ -41,6 +41,7 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.aurelhubert:ahbottomnavigation:2.2.0'
     implementation "com.orhanobut:hawk:2.0.1"
+
     implementation('com.github.bumptech.glide:glide:4.7.1') {
         exclude group: "com.android.support"
     }

@@ -8,6 +8,9 @@
     <string name="hint_desc_activity">توضیحات فعالیت</string>
     <string name="hint_password">رمز عبور</string>
     <string name="tab_profile">پروفایل</string>
+    <string name="tab_activities">تکالیف</string>
+    <string name="tab_notifications">اعلان ها</string>
+    <string name="tab_schedule">برنامه هفتگی</string>
     <string name="btn_login">ورود</string>
     <string name="btn_send">ارسال</string>
     <string name="btn_send_message">ارسال پیام به</string>
@@ -25,6 +28,11 @@
         <item>مدرسه بی ادب</item>
         <item>مدرست سبحان</item>
         <item>ابن سینا</item>
-        ...
     </string-array>
+    <string-array name="students">
+        <item>حسن جعفری</item>
+        <item>همایون جعفری</item>
+        <item>علی جعفری</item>
+    </string-array>
+
 </resources>

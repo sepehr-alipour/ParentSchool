@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.widget.AppCompatAutoCompleteTextView;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
-import android.widget.ArrayAdapter;
 
 import java.util.ArrayList;
 

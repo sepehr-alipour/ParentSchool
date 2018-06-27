@@ -56,8 +56,9 @@ public class ActivityLogin extends BaseActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
 
-
-        if (TextUtils.isEmpty(edtPassword.getText().toString()) ||
+        Intent intent = new Intent(ActivityLogin.this, ActivityChildren.class);
+        startActivity(intent);
+        /*if (TextUtils.isEmpty(edtPassword.getText().toString()) ||
                 TextUtils.isEmpty(edtUsername.getText().toString()) ||
                 TextUtils.isEmpty(edtUsername.getText().toString())) {
 
@@ -67,13 +68,13 @@ public class ActivityLogin extends BaseActivity implements View.OnClickListener 
             loginReq.setUsername(edtUsername.getText().toString());
             loginReq.setPassword(edtPassword.getText().toString());
             if (inEdit) {
-              /*  int id = getIntent().getIntExtra(FragmentAddSchool.INTENT_KEY_SCHOOL_ID, -1);
+              *//*  int id = getIntent().getIntExtra(FragmentAddSchool.INTENT_KEY_SCHOOL_ID, -1);
                 loginReq.setId(PreferenceManager.getSchoolConnection(id).getId());
                 loginReq.setChecked(PreferenceManager.getSchoolConnection(id).isChecked());
                 PreferenceManager.updateSchoolConnection(loginReq);
 
                 setResult(RESULT_OK);
-                finish();*/
+                finish();*//*
             } else {
 
                 loginReq.setId(PreferenceManager.getSchoolConnections().size() + 1);
@@ -96,7 +97,7 @@ public class ActivityLogin extends BaseActivity implements View.OnClickListener 
                     }
                 });
             }
-        }
+        }*/
 
     }
 }
