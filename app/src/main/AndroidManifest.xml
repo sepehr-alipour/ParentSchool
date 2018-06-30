@@ -13,6 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.activity.ActivityMain"></activity>
+        <activity android:name=".view.activity.ActivityNotificationNew"></activity>
+        <activity android:name=".view.activity.ActivityNotifDetail"></activity>
         <activity android:name=".view.activity.ActivityChildren">
 
 

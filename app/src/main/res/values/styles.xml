@@ -11,10 +11,12 @@
         <item name="android:dropDownListViewStyle">@style/MyListViewStyle</item>
 
     </style>
+
     <style name="MyListViewStyle" parent="@android:style/Widget.ListView">
         <item name="android:divider">@color/gray_divider</item>
         <item name="android:dividerHeight">1px</item>
     </style>
+
     <style name="EditTextStyle" parent="Base.Widget.AppCompat.EditText">
         <item name="android:background">@drawable/edit_text</item>
         <item name="android:padding">5dp</item>
@@ -22,7 +24,8 @@
         <item name="android:layout_height">40dp</item>
     </style>
 
-    <style name="Theme.AppCompat.Translucent">
+
+    <style name="Theme.AppCompat.Translucent" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>

@@ -1,0 +1,92 @@
+package parent.school.salsal.com.adapter;
+
+import android.support.annotation.NonNull;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import parent.school.salsal.com.R;
+import parent.school.salsal.com.interfaces.OnNotifClickListener;
+import parent.school.salsal.com.model.NotificationRes;
+
+public class AdapterNotif extends RecyclerView.Adapter<AdapterNotif.ViewHolder> {
+    private final List<NotificationRes.DataBean> listNotif;
+    private OnNotifClickListener notifClickListener;
+
+    public AdapterNotif(List<NotificationRes.DataBean> notifs, OnNotifClickListener listener) {
+        listNotif = notifs;
+        notifClickListener = listener;
+    }
+
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_notification, parent, false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+        final NotificationRes.DataBean itemList = listNotif.get(position);
+        holder.txtDate.setText(itemList.getCreatedAt());
+        holder.txtDesc.setText(itemList.getMessage());
+        holder.txtSender.setText(itemList.getUserId() + "");
+        holder.txtTitle.setText(itemList.getTitle());
+      /*  String[] testArray = holder.txtDate.getContext().getResources().getStringArray(R.array.notification_type);
+
+        switch (itemList.getType()) {
+            case 1:
+                holder.txtType.setText(testArray[0].split("-")[0]);
+                break;
+            case 2:
+                holder.txtType.setText(testArray[1].split("-")[0]);
+                break;
+        }*/
+    }
+
+    @Override
+    public int getItemCount() {
+        return listNotif.size();
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
+
+    {
+        @BindView(R.id.txtDate)
+        TextView txtDate;
+
+        @BindView(R.id.txtDesc)
+        TextView txtDesc;
+
+        @BindView(R.id.txtSender)
+        TextView txtSender;
+
+        @BindView(R.id.txtTitle)
+        TextView txtTitle;
+
+        @BindView(R.id.txtType)
+        TextView txtType;
+
+
+        public ViewHolder(View itemView) {
+
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            notifClickListener.clicked(listNotif.get(getAdapterPosition()));
+
+        }
+    }
+}

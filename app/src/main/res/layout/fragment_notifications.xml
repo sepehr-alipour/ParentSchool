@@ -1,14 +1,54 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragment.FragmentNotifications">
+    tools:context="com.salsal.school.teacher.view.Fragments.FragmentProfileDetail">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/tabLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/space_20_dp"
+        android:paddingLeft="@dimen/space_40_dp"
+        android:paddingRight="@dimen/space_40_dp"
+        android:paddingTop="@dimen/space_20_dp">
+
+        <Button
+            android:id="@+id/receivedMessageTab"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_pink_fill"
+            android:text="اعلانات دریافتی" />
+
+        <Button
+            android:id="@+id/sentMessageTab"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape_pink_blank"
+            android:text="اعلانات ارسالی" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/notifList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="notif" />
+        android:layout_below="@+id/tabLayout" />
 
-</FrameLayout>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabAddNotif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="left|bottom"
+        android:layout_margin="@dimen/space_10_dp"
+        android:layout_marginRight="@dimen/space_10_dp"
+        android:clickable="true"
+        android:src="@drawable/ic_action_add"
+        app:fabSize="normal" />
+</RelativeLayout>
