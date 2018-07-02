@@ -3,7 +3,6 @@ package parent.school.salsal.com.view.activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -14,8 +13,7 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import parent.school.salsal.com.R;
-import parent.school.salsal.com.view.fragment.FragmentActivities;
-import parent.school.salsal.com.view.fragment.FragmentCources;
+import parent.school.salsal.com.view.fragment.FragmentCourses;
 import parent.school.salsal.com.view.fragment.FragmentNotifications;
 import parent.school.salsal.com.view.fragment.FragmentProfile;
 import parent.school.salsal.com.view.fragment.FragmentSchedule;
@@ -72,7 +70,7 @@ public class ActivityMain extends BaseActivity implements View.OnClickListener,
             case TAB_َACTIVITIES:
                 // toolbar.setVisibility(View.VISIBLE);
 
-                selectedFragment = FragmentCources.newInstance();
+                selectedFragment = FragmentCourses.newInstance();
                 break;
             case TAB_SCHEDLEَ:
                 //  toolbar.setVisibility(View.VISIBLE);

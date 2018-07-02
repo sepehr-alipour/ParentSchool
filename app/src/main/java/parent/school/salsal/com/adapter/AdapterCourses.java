@@ -15,11 +15,11 @@ import parent.school.salsal.com.R;
 import parent.school.salsal.com.interfaces.OnDataSelectListener;
 import parent.school.salsal.com.model.CourseRes;
 
-public class AdapterCources extends RecyclerView.Adapter<AdapterCources.ViewHolder> {
+public class AdapterCourses extends RecyclerView.Adapter<AdapterCourses.ViewHolder> {
     private final List<CourseRes.DataBean> listCource;
     private OnDataSelectListener notifClickListener;
 
-    public AdapterCources(List<CourseRes.DataBean> notifs, OnDataSelectListener listener) {
+    public AdapterCourses(List<CourseRes.DataBean> notifs, OnDataSelectListener listener) {
         listCource = notifs;
         notifClickListener = listener;
     }
@@ -27,7 +27,7 @@ public class AdapterCources extends RecyclerView.Adapter<AdapterCources.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_cource, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_course, parent, false);
         return new ViewHolder(view);
     }
 

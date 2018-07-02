@@ -34,7 +34,7 @@ public class AdapterCourseList extends RecyclerView.Adapter<AdapterCourseList.Vi
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_reveiver_message, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_course, parent, false);
         return new ViewHolder(view);
     }
 
@@ -59,9 +59,6 @@ public class AdapterCourseList extends RecyclerView.Adapter<AdapterCourseList.Vi
 
         @BindView(R.id.txtTitle)
         TextView txtTitle;
-
-        @BindView(R.id.rootItemw)
-        LinearLayout rootView;
 
         @BindView(R.id.imgIcon)
         ImageView imgIcon;
