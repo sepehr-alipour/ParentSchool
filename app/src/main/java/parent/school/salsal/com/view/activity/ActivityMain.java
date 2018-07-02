@@ -15,6 +15,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.view.fragment.FragmentActivities;
+import parent.school.salsal.com.view.fragment.FragmentCources;
 import parent.school.salsal.com.view.fragment.FragmentNotifications;
 import parent.school.salsal.com.view.fragment.FragmentProfile;
 import parent.school.salsal.com.view.fragment.FragmentSchedule;
@@ -71,7 +72,7 @@ public class ActivityMain extends BaseActivity implements View.OnClickListener,
             case TAB_َACTIVITIES:
                 // toolbar.setVisibility(View.VISIBLE);
 
-                selectedFragment = FragmentActivities.newInstance();
+                selectedFragment = FragmentCources.newInstance();
                 break;
             case TAB_SCHEDLEَ:
                 //  toolbar.setVisibility(View.VISIBLE);
