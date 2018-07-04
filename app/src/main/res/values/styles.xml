@@ -8,6 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:fontFamily">@font/iransans</item>
         <item name="fontFamily">@font/iransans</item>
+        <item name="android:tabWidgetStyle">@style/CustomTabLayout</item>
         <item name="android:dropDownListViewStyle">@style/MyListViewStyle</item>
 
     </style>
@@ -33,4 +34,10 @@
         <item name="android:windowAnimationStyle">@android:style/Animation</item>
     </style>
 
+    <style name="CustomTabLayout" parent="Widget.Design.TabLayout">
+        <item name="tabIndicatorColor">@android:color/white</item>
+        <item name="tabIndicatorHeight">3dp</item>
+        <item name="tabBackground">?attr/selectableItemBackground</item>
+        <item name="tabSelectedTextColor">@android:color/white</item>
+    </style>
 </resources>

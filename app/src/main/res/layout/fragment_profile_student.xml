@@ -1,0 +1,159 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <android.support.v4.widget.NestedScrollView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/space_10_dp"
+                android:padding="@dimen/space_20_dp"
+                app:contentPadding="@dimen/space_20_dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/space_20_dp"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/space_10_dp">
+
+
+                        <TextView
+                            android:id="@+id/txtName"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center|right"
+                            android:layout_weight="1"
+                            android:gravity="right|center"
+                            android:text="---"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textSize="24sp"
+                            android:textStyle="bold" />
+
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/profile_image"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_gravity="left|center"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_action_profile"
+                            app:civ_border_color="@color/colorPrimaryDark"
+                            app:civ_border_width="2dp"
+                            app:civ_circle_background_color="@android:color/white"
+                            app:layout_collapseMode="parallax" />
+                    </LinearLayout>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/gray_divider" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_25_dp"
+                        android:drawablePadding="@dimen/space_10_dp"
+                        android:drawableRight="@drawable/ic_action_code"
+                        android:gravity="center_vertical"
+                        android:text="کد دانش آموزی"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/space_10_dp"
+                        android:background="@color/gray_divider" />
+
+                    <TextView
+                        android:id="@+id/txtStdId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_10_dp"
+                        android:gravity="right"
+                        android:paddingRight="@dimen/space_10_dp"
+                        android:text="358464XXXX"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_25_dp"
+                        android:drawablePadding="@dimen/space_10_dp"
+                        android:drawableRight="@drawable/ic_action_cake"
+                        android:gravity="center_vertical"
+                        android:text="تاریخ تولد"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/space_10_dp"
+                        android:background="@color/gray_divider" />
+
+                    <TextView
+                        android:id="@+id/txtBirthday"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_10_dp"
+                        android:gravity="right"
+                        android:paddingRight="@dimen/space_10_dp"
+                        android:text="--/--/--"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_25_dp"
+                        android:drawablePadding="@dimen/space_10_dp"
+                        android:drawableRight="@drawable/ic_action_code"
+                        android:gravity="center_vertical"
+                        android:text="کد ملی"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="@dimen/space_10_dp"
+                        android:background="@color/gray_divider" />
+
+                    <TextView
+                        android:id="@+id/txtNationalCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/space_10_dp"
+                        android:gravity="right"
+                        android:paddingRight="@dimen/space_10_dp"
+                        android:text="358464XXXX"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textSize="16sp" />
+
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</RelativeLayout>
