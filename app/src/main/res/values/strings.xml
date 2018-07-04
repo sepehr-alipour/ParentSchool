@@ -12,6 +12,7 @@
     <string name="tab_notifications">اعلان ها</string>
     <string name="tab_schedule">برنامه هفتگی</string>
     <string name="btn_login">ورود</string>
+    <string name="btn_change_student">انتخاب فرزند دیگر</string>
     <string name="btn_send">ارسال</string>
     <string name="btn_send_message">ارسال پیام به</string>
     <string name="btn_send_activity">تعریف فعالیت برای</string>

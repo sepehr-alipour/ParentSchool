@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/space_5_dp"
-        android:clickable="true"
         android:foreground="?attr/selectableItemBackgroundBorderless"
         app:contentPadding="@dimen/space_10_dp">
 

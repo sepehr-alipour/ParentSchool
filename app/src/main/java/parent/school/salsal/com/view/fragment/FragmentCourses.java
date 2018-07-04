@@ -1,5 +1,6 @@
 package parent.school.salsal.com.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -20,6 +21,7 @@ import parent.school.salsal.com.adapter.OnReceiverClickListener;
 import parent.school.salsal.com.model.CourseRes;
 import parent.school.salsal.com.model.ReceiverMessageItem;
 import parent.school.salsal.com.model.StudentRes;
+import parent.school.salsal.com.view.activity.ActivityActivities;
 
 public class FragmentCourses extends BaseFragment implements OnReceiverClickListener {
 
@@ -68,6 +70,6 @@ public class FragmentCourses extends BaseFragment implements OnReceiverClickList
 
     @Override
     public void clicked(CourseRes.DataBean courseRes, int position) {
-
+        startActivity(new Intent(getContext(), ActivityActivities.class));
     }
 }
