@@ -20,6 +20,7 @@
     <string name="failed_server">failed</string>
     <string name="toast_empty_edittext">لطفا نام کاربری و رمز عبور خود را وارد کنید</string>
     <string name="hint_school_name">نام مدرسه ...</string>
+    <string name="priority">زنگ %1$d</string>
     <string-array name="schools">
         <item>مدرسه البرز</item>
         <item>مدرسه آبان</item>

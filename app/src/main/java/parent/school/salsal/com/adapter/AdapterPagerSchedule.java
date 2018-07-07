@@ -6,24 +6,26 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import parent.school.salsal.com.view.fragment.FragmentProfileParent;
+import parent.school.salsal.com.view.fragment.FragmentProfileSchools;
 import parent.school.salsal.com.view.fragment.FragmentProfileStudent;
+import parent.school.salsal.com.view.fragment.FragmentScheduleWeekly;
 
-public class AdapterPager extends FragmentPagerAdapter {
+public class AdapterPagerSchedule extends FragmentPagerAdapter {
 
-    private final int POSITION_PARENT = 0;
-    private final int POSITION_STUDENT = 1;
+    public final static int POSITION_SCHEDULE_WEEKLY = 0;
+    public final static int POSITION_ATTENDANCE = 1;
 
-    public AdapterPager(FragmentManager fm) {
+    public AdapterPagerSchedule(FragmentManager fm) {
         super(fm);
     }
 
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case POSITION_PARENT:
-                return FragmentProfileParent.newInstance();
-            case POSITION_STUDENT:
-                return FragmentProfileStudent.newInstance();
+            case POSITION_SCHEDULE_WEEKLY:
+                return FragmentScheduleWeekly.newInstance();
+            case POSITION_ATTENDANCE:
+                return FragmentScheduleWeekly.newInstance();
             default:
                 FragmentProfileParent.newInstance();
         }
@@ -36,12 +38,12 @@ public class AdapterPager extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
 
         switch (position) {
-            case POSITION_PARENT:
-                return "مشخصات اولیا";
-            case POSITION_STUDENT:
-                return "مشخصات دانش آموز";
+            case POSITION_SCHEDULE_WEEKLY:
+                return "برنامه هفتگی";
+            case POSITION_ATTENDANCE:
+                return "حضور غیاب";
             default:
-                FragmentProfileParent.newInstance();
+                FragmentScheduleWeekly.newInstance();
         }
         return "";
     }

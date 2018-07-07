@@ -2,6 +2,8 @@ package parent.school.salsal.com.interfaces;
 
 import com.google.gson.JsonObject;
 
+import java.util.List;
+
 import parent.school.salsal.com.model.AttendanceReq;
 import parent.school.salsal.com.model.AttendanceRes;
 import parent.school.salsal.com.model.LoginReq;
@@ -14,6 +16,7 @@ import parent.school.salsal.com.model.SchoolListRes;
 import parent.school.salsal.com.model.SendNotificationReq;
 import parent.school.salsal.com.model.StudentActivityRes;
 import parent.school.salsal.com.model.StudentLessonsRes;
+import parent.school.salsal.com.model.StudentProfileReq;
 import parent.school.salsal.com.model.StudentProfileRes;
 import parent.school.salsal.com.model.StudentRes;
 import parent.school.salsal.com.model.TeacherProfileRes;
@@ -56,8 +59,8 @@ public interface ApiInterface {
     @GET(URL_V1 + "/activity/student")
     Call<StudentActivityRes> sendActivity(@Query("token") String token, @Query("course_id") int courseid, @Query("class_id") int classid);
 
-    @GET(URL_V1 + "/student/{id}")
-    Call<StudentRes> getParentStudents(@Path("id") String parentId, @Query("token") String token);
+    @GET(URL_V1 + "parent/students")
+    Call<List<StudentRes>> getParentStudents(@Query("token") String token);
 
 
     @POST(URL_V1 + "/attendance")
@@ -66,8 +69,8 @@ public interface ApiInterface {
     @GET(URL_V1 + "/teacherProfile/courses")
     Call<StudentLessonsRes> getTecherCourses(@Query("token") String token);
 
-    @POST(URL_V1 + "/studentProfile")
-    Call<JsonObject> updateProfile(@Query("user_id") String userId, @Query("token") String token, @Body StudentLessonsRes teacherProfileReq);
+    @POST(URL_V1 + "/studentProfile/{id}")
+    Call<JsonObject> updateProfile(@Path("id") String id, @Query("token") String token, @Body StudentProfileReq studentProfileReq);
 
     @POST(URL_V1 + "/parentProfile")
     Call<JsonObject> updateParentProfile(@Query("user_id") String userId, @Query("token") String token, @Body StudentLessonsRes teacherProfileReq);

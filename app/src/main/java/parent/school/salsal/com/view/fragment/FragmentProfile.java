@@ -6,9 +6,7 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +15,11 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import parent.school.salsal.com.R;
-import parent.school.salsal.com.adapter.AdapterPager;
+import parent.school.salsal.com.adapter.AdapterPagerProfile;
 
 public class FragmentProfile extends Fragment {
 
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
     @BindView(R.id.tab_layout)
     TabLayout tabLayout;
     @BindView(R.id.appBarLayout)
@@ -50,10 +46,30 @@ public class FragmentProfile extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        AdapterPager pagerAdapter = new AdapterPager(getChildFragmentManager());
+        AdapterPagerProfile pagerAdapter = new AdapterPagerProfile(getChildFragmentManager());
+
         unbinder = ButterKnife.bind(this, view);
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                if (position == AdapterPagerProfile.POSITION_SCHOOL) {
+                    fabEdit.setImageResource(R.drawable.ic_action_add);
+
+                } else fabEdit.setImageResource(R.drawable.ic_action_edit);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
         return view;
     }
 
@@ -62,4 +78,5 @@ public class FragmentProfile extends Fragment {
         super.onDestroyView();
         unbinder.unbind();
     }
+
 }
