@@ -18,10 +18,10 @@ import java.util.BitSet;
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.model.SchoolListRes;
 
-public class SchoolAdapter extends ArrayAdapter<SchoolListRes> {
+public class AdapterSpinnerSchool extends ArrayAdapter<SchoolListRes> {
     private final ArrayList<SchoolListRes> items, tempSchool, suggestions;
 
-    public SchoolAdapter(@NonNull Context context, ArrayList<SchoolListRes> schoolItems) {
+    public AdapterSpinnerSchool(@NonNull Context context, ArrayList<SchoolListRes> schoolItems) {
         super(context, R.layout.list_item_school, schoolItems);
         items = schoolItems;
         this.tempSchool = new ArrayList<SchoolListRes>(schoolItems);
@@ -38,7 +38,7 @@ public class SchoolAdapter extends ArrayAdapter<SchoolListRes> {
         {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_school, parent, false);
         }
-        TextView txtTitle = convertView.findViewById(R.id.txtTitle);
+        TextView txtTitle = convertView.findViewById(R.id.txtName);
         ImageView imgLogo = convertView.findViewById(R.id.imgLogo);
         txtTitle.setText(item.getName());
         imgLogo.setImageResource(item.getLogo());

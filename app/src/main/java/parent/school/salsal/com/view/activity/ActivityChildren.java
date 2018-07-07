@@ -4,13 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.AppCompatSpinner;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -21,17 +17,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import parent.school.salsal.com.R;
-import parent.school.salsal.com.adapter.ChildrenAdapter;
-import parent.school.salsal.com.adapter.SchoolAdapter;
-import parent.school.salsal.com.model.LoginReq;
-import parent.school.salsal.com.model.LoginRes;
-import parent.school.salsal.com.model.SchoolListRes;
+import parent.school.salsal.com.adapter.AdapterChildren;
 import parent.school.salsal.com.model.StudentRes;
-import parent.school.salsal.com.util.PreferenceManager;
-import parent.school.salsal.com.webservice.APIErrorResult;
-import parent.school.salsal.com.webservice.CallbackHandler;
-import parent.school.salsal.com.webservice.WebServiceHelper;
-import retrofit2.Response;
 
 /**
  * Created by Sepehr on 12/4/2017.
@@ -60,7 +47,7 @@ public class ActivityChildren extends BaseActivity implements View.OnClickListen
             schoolListRes.setAvatar("https://pickaface.net/gallery/avatar/unr_paii_180627_0934_vpwcm.png");
             list.add(schoolListRes);
         }
-        ChildrenAdapter adapter = new ChildrenAdapter(this, list);
+        AdapterChildren adapter = new AdapterChildren(this, list);
         spnChildren.setAdapter(adapter);
         spnChildren.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

@@ -16,14 +16,17 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import parent.school.salsal.com.R;
-import parent.school.salsal.com.adapter.AdapterCourseList;
+import parent.school.salsal.com.adapter.AdapterSchools;
 import parent.school.salsal.com.adapter.OnReceiverClickListener;
+import parent.school.salsal.com.adapter.AdapterSpinnerSchool;
+import parent.school.salsal.com.interfaces.OnDataSelectListener;
 import parent.school.salsal.com.model.CourseRes;
 import parent.school.salsal.com.model.ReceiverMessageItem;
+import parent.school.salsal.com.model.SchoolListRes;
 import parent.school.salsal.com.model.StudentRes;
 import parent.school.salsal.com.view.activity.ActivityActivities;
 
-public class FragmentProfileSchools extends BaseFragment implements OnReceiverClickListener {
+public class FragmentProfileSchools extends BaseFragment implements OnDataSelectListener {
 
     @BindView(R.id.list)
     RecyclerView list;
@@ -40,15 +43,17 @@ public class FragmentProfileSchools extends BaseFragment implements OnReceiverCl
         View view = inflater.inflate(R.layout.fragment_schools, container, false);
         unbinder = ButterKnife.bind(this, view);
 
-        ArrayList<CourseRes.DataBean> courses = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            CourseRes.DataBean courseRes = new CourseRes.DataBean();
-            courseRes.setTitle("درس" + i);
-            courses.add(courseRes);
+        String[] schools = getResources().getStringArray(R.array.schools);
+        ArrayList<SchoolListRes> listSchools = new ArrayList<>();
+        for (int i = 0; i < schools.length; i++) {
+            SchoolListRes schoolListRes = new SchoolListRes();
+            schoolListRes.setName(schools[i]);
+            schoolListRes.setLogo(R.drawable.logo);
+            listSchools.add(schoolListRes);
         }
-        AdapterCourseList adapterCourseList = new AdapterCourseList(courses, this);
+        AdapterSchools adapterSchoolList = new AdapterSchools(listSchools, this);
         list.setLayoutManager(new LinearLayoutManager(getContext()));
-        list.setAdapter(adapterCourseList);
+        list.setAdapter(adapterSchoolList);
         return view;
     }
 
@@ -58,18 +63,9 @@ public class FragmentProfileSchools extends BaseFragment implements OnReceiverCl
         unbinder.unbind();
     }
 
-    @Override
-    public void clicked(ReceiverMessageItem receiverMessageItem, int position) {
-
-    }
 
     @Override
-    public void clicked(StudentRes.DataBean studentRes, int position) {
+    public void dataSelected(Object data) {
 
-    }
-
-    @Override
-    public void clicked(CourseRes.DataBean courseRes, int position) {
-        startActivity(new Intent(getContext(), ActivityActivities.class));
     }
 }

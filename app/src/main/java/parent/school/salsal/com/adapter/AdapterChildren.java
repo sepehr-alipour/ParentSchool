@@ -18,11 +18,11 @@ import java.util.ArrayList;
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.model.StudentRes;
 
-public class ChildrenAdapter extends ArrayAdapter<StudentRes> {
+public class AdapterChildren extends ArrayAdapter<StudentRes> {
     private Context ctx;
     private ArrayList<StudentRes> contentArray;
 
-    public ChildrenAdapter(Context context, ArrayList<StudentRes> objects) {
+    public AdapterChildren(Context context, ArrayList<StudentRes> objects) {
         super(context, R.layout.list_item_school, R.id.txtTitle, objects);
         this.ctx = context;
         this.contentArray = objects;
@@ -43,7 +43,7 @@ public class ChildrenAdapter extends ArrayAdapter<StudentRes> {
         LayoutInflater inflater = (LayoutInflater) ctx.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View row = inflater.inflate(R.layout.list_item_school, parent, false);
 
-        TextView textView = (TextView) row.findViewById(R.id.txtTitle);
+        TextView textView = (TextView) row.findViewById(R.id.txtName);
         textView.setText(contentArray.get(position).getName());
 
         ImageView imageView = (ImageView) row.findViewById(R.id.imgLogo);

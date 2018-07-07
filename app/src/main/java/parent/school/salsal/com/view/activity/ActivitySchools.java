@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import parent.school.salsal.com.R;
-import parent.school.salsal.com.adapter.SchoolAdapter;
+import parent.school.salsal.com.adapter.AdapterSpinnerSchool;
 import parent.school.salsal.com.model.SchoolListRes;
 
 
@@ -36,7 +36,7 @@ public class ActivitySchools extends BaseActivity {
             schoolListRes.setLogo(R.drawable.logo);
             list.add(schoolListRes);
         }
-        SchoolAdapter adapter = new SchoolAdapter(this, list);
+        AdapterSpinnerSchool adapter = new AdapterSpinnerSchool(this, list);
         edtAutoSchools.setAdapter(adapter);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,5 +1,6 @@
 package parent.school.salsal.com.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -16,8 +17,9 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.adapter.AdapterPagerProfile;
+import parent.school.salsal.com.view.activity.ActivityEditProfile;
 
-public class FragmentProfile extends Fragment {
+public class FragmentProfile extends Fragment implements View.OnClickListener {
 
 
     @BindView(R.id.tab_layout)
@@ -51,6 +53,7 @@ public class FragmentProfile extends Fragment {
         unbinder = ButterKnife.bind(this, view);
         viewPager.setAdapter(pagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+        fabEdit.setOnClickListener(this);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -79,4 +82,8 @@ public class FragmentProfile extends Fragment {
         unbinder.unbind();
     }
 
+    @Override
+    public void onClick(View v) {
+        startActivity(new Intent(getContext(), ActivityEditProfile.class));
+    }
 }

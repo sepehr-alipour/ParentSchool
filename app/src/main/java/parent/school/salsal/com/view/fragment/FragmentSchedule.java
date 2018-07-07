@@ -3,7 +3,6 @@ package parent.school.salsal.com.view.fragment;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -15,7 +14,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import parent.school.salsal.com.R;
-import parent.school.salsal.com.adapter.AdapterPagerProfile;
 import parent.school.salsal.com.adapter.AdapterPagerSchedule;
 
 public class FragmentSchedule extends Fragment {
