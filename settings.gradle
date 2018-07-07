@@ -1,1 +1,2 @@
-include ':app'
+include ':app', ':persiandat'
+project(':persiandat').projectDir = new File('persiandatepicker')

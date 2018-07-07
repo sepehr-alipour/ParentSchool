@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.telecom.CallAudioState;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.adapter.AdapterPagerProfile;
+import parent.school.salsal.com.view.activity.ActivityChildren;
 import parent.school.salsal.com.view.activity.ActivityEditProfile;
 
 public class FragmentProfile extends Fragment implements View.OnClickListener {
@@ -33,6 +35,7 @@ public class FragmentProfile extends Fragment implements View.OnClickListener {
     @BindView(R.id.htab_maincontent)
     CoordinatorLayout htabMaincontent;
     Unbinder unbinder;
+    int mode = -1;
 
     public FragmentProfile() {
         // Required empty public constructor
@@ -84,6 +87,18 @@ public class FragmentProfile extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(getContext(), ActivityEditProfile.class));
+
+        switch (viewPager.getCurrentItem()) {
+            case AdapterPagerProfile.POSITION_PARENT:
+
+            case AdapterPagerProfile.POSITION_STUDENT:
+
+                startActivity(new Intent(getContext(), ActivityEditProfile.class));
+                break;
+            default:
+                startActivity(new Intent(getContext(), ActivityChildren.class));
+
+
+        }
     }
 }
