@@ -8,12 +8,14 @@ import android.support.v4.app.FragmentPagerAdapter;
 import parent.school.salsal.com.view.fragment.FragmentProfileParent;
 import parent.school.salsal.com.view.fragment.FragmentProfileSchools;
 import parent.school.salsal.com.view.fragment.FragmentProfileStudent;
+import parent.school.salsal.com.view.fragment.FragmentProfileTeachers;
 
 public class AdapterPagerProfile extends FragmentPagerAdapter {
 
     public final static int POSITION_PARENT = 0;
     public final static int POSITION_STUDENT = 1;
-    public final static int POSITION_SCHOOL = 2;
+    public final static int POSITION_TEACHERS = 2;
+    public final static int POSITION_SCHOOL = 3;
 
     public AdapterPagerProfile(FragmentManager fm) {
         super(fm);
@@ -26,6 +28,8 @@ public class AdapterPagerProfile extends FragmentPagerAdapter {
                 return FragmentProfileParent.newInstance();
             case POSITION_STUDENT:
                 return FragmentProfileStudent.newInstance();
+            case POSITION_TEACHERS:
+                return FragmentProfileTeachers.newInstance();
             case POSITION_SCHOOL:
                 return FragmentProfileSchools.newInstance();
             default:
@@ -41,11 +45,13 @@ public class AdapterPagerProfile extends FragmentPagerAdapter {
 
         switch (position) {
             case POSITION_PARENT:
-                return "مشخصات اولیا";
+                return "اولیا";
             case POSITION_STUDENT:
-                return "مشخصات دانش آموز";
+                return "دانش آموز";
+            case POSITION_TEACHERS:
+                return "معلم ها";
             case POSITION_SCHOOL:
-                return "مشخصات مدرسه";
+                return "مدرسه";
             default:
                 FragmentProfileParent.newInstance();
         }
@@ -54,6 +60,6 @@ public class AdapterPagerProfile extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return 4;
     }
 }
