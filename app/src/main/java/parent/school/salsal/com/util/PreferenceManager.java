@@ -8,6 +8,8 @@ import com.orhanobut.hawk.Hawk;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import parent.school.salsal.com.BuildConfig;
+import parent.school.salsal.com.R;
 import parent.school.salsal.com.model.LoginReq;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -17,7 +19,7 @@ import static android.content.Context.MODE_PRIVATE;
  */
 public class PreferenceManager {
     private static PreferenceManager ourInstance = new PreferenceManager();
-    public static final String BASE_URL = "http://192.168.2.119:80";
+    //public static final String BASE_URL = "http://192.168.2.119:80";
     // public static final String BASE_URL = "http://192.168.1.12:80";
     //public static final String BASE_URL = "http://192.168.43.114:80";
     public static final int PER_PAGE = 10;
@@ -46,7 +48,7 @@ public class PreferenceManager {
         }
     }
 
-    public static void addSchoolConnection(LoginReq schoolConnection) {
+    public static boolean addSchoolConnection(LoginReq schoolConnection) {
 
         ArrayList<LoginReq> schoolConnections = Hawk.get(PREF_SCHOOL_CONNECTION, new ArrayList<LoginReq>());
         for (LoginReq school : schoolConnections) {
@@ -54,22 +56,22 @@ public class PreferenceManager {
         }
         for (int i = 0; i < schoolConnections.size(); i++) {
             if (schoolConnections.get(i).getConnectionUrl().equalsIgnoreCase(schoolConnection.getConnectionUrl())) {
-                schoolConnections.remove(i);
+             /*   schoolConnections.remove(i);
                 schoolConnections.add(i, schoolConnection);
-                Hawk.put(PREF_SCHOOL_CONNECTION, schoolConnections);
-                return;
+                Hawk.put(PREF_SCHOOL_CONNECTION, schoolConnections);*/
+                return false;
             }
         }
         schoolConnections.add(schoolConnection);
         Hawk.put(PREF_SCHOOL_CONNECTION, schoolConnections);
-
+        return true;
     }
 
     public static String getUrl() {
         ArrayList<LoginReq> conncections = Hawk.get(PREF_SCHOOL_CONNECTION, new ArrayList<LoginReq>());
         for (LoginReq loginReq : conncections) {
             if (loginReq.isChecked())
-                return "http://" + loginReq.getConnectionUrl();
+                return loginReq.getConnectionUrl();
         }
         return null;
     }

@@ -15,8 +15,17 @@ public class LoginReq {
     @SerializedName("password")
     private String password;
     String schoolName;
+    String schoolLogo;
     String connectionUrl;
     int id;
+
+    public String getSchoolLogo() {
+        return schoolLogo;
+    }
+
+    public void setSchoolLogo(String schoolLogo) {
+        this.schoolLogo = schoolLogo;
+    }
 
     public int getId() {
         return id;

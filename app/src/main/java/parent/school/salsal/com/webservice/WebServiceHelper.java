@@ -6,6 +6,7 @@ import android.content.Context;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import parent.school.salsal.com.R;
 import parent.school.salsal.com.interfaces.ApiInterface;
 import parent.school.salsal.com.util.PreferenceManager;
 import retrofit2.Retrofit;
@@ -20,6 +21,17 @@ public class WebServiceHelper {
     private WebServiceHelper() {
     }
 
+    public static ApiInterface get(String url) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(url)
+                //  .client(okClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        return retrofit.create(ApiInterface.class);
+    }
+
     public static ApiInterface get(Context context) {
         OkHttpClient okClient = new OkHttpClient.Builder()
                 .connectTimeout(40, TimeUnit.SECONDS)
@@ -28,7 +40,7 @@ public class WebServiceHelper {
 
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(PreferenceManager.getUrl())
+                .baseUrl(PreferenceManager.getUrl() != null ? PreferenceManager.getUrl() : context.getString(R.string.BASE_URL))
                 //  .client(okClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();

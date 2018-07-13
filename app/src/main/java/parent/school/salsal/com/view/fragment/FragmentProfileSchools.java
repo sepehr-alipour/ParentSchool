@@ -48,7 +48,7 @@ public class FragmentProfileSchools extends BaseFragment implements OnDataSelect
         for (int i = 0; i < schools.length; i++) {
             SchoolListRes schoolListRes = new SchoolListRes();
             schoolListRes.setName(schools[i]);
-            schoolListRes.setLogo(R.drawable.logo);
+           // schoolListRes.setLogo(R.drawable.logo);
             listSchools.add(schoolListRes);
         }
         AdapterSchools adapterSchoolList = new AdapterSchools(listSchools, this);

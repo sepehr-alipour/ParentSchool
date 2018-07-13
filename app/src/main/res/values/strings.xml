@@ -21,6 +21,8 @@
     <string name="toast_empty_edittext">لطفا نام کاربری و رمز عبور خود را وارد کنید</string>
     <string name="hint_school_name">نام مدرسه ...</string>
     <string name="priority">زنگ %1$d</string>
+    <string name="toast_error_school">لطفا مدرسه خود را انتخاب کنید</string>
+    <string name="toast_warning_duplicate_school">این مدرسه قبلا ثبت شده است</string>
     <string-array name="schools">
         <item>مدرسه البرز</item>
         <item>مدرسه آبان</item>

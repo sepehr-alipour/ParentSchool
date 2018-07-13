@@ -56,30 +56,29 @@ public class ActivityLogin extends BaseActivity implements View.OnClickListener 
     @Override
     public void onClick(View v) {
 
-        Intent intent = new Intent(ActivityLogin.this, ActivityChildren.class);
-        startActivity(intent);
-        /*if (TextUtils.isEmpty(edtPassword.getText().toString()) ||
+
+        if (TextUtils.isEmpty(edtPassword.getText().toString()) ||
                 TextUtils.isEmpty(edtUsername.getText().toString()) ||
                 TextUtils.isEmpty(edtUsername.getText().toString())) {
 
             Toast.makeText(ActivityLogin.this, getString(R.string.toast_empty_edittext), Toast.LENGTH_SHORT).show();
         } else {
-            final LoginReq loginReq = new LoginReq();
+            final LoginReq loginReq =PreferenceManager.getSchoolConnection(PreferenceManager.getSchoolConnections().size());
             loginReq.setUsername(edtUsername.getText().toString());
             loginReq.setPassword(edtPassword.getText().toString());
             if (inEdit) {
-              *//*  int id = getIntent().getIntExtra(FragmentAddSchool.INTENT_KEY_SCHOOL_ID, -1);
+         /*       int id = getIntent().getIntExtra(FragmentAddSchool.INTENT_KEY_SCHOOL_ID, -1);
                 loginReq.setId(PreferenceManager.getSchoolConnection(id).getId());
                 loginReq.setChecked(PreferenceManager.getSchoolConnection(id).isChecked());
                 PreferenceManager.updateSchoolConnection(loginReq);
 
                 setResult(RESULT_OK);
-                finish();*//*
+                finish();*/
             } else {
 
-                loginReq.setId(PreferenceManager.getSchoolConnections().size() + 1);
                 loginReq.setChecked(true);
-                PreferenceManager.addSchoolConnection(loginReq);
+
+                PreferenceManager.updateSchoolConnection(loginReq);
                 WebServiceHelper.get(ActivityLogin.this).loginUser(loginReq).enqueue(new CallbackHandler<LoginRes>(ActivityLogin.this, true, true) {
                     @Override
                     public void onSuccess(Response<LoginRes> response) {
@@ -97,7 +96,7 @@ public class ActivityLogin extends BaseActivity implements View.OnClickListener 
                     }
                 });
             }
-        }*/
+        }
 
     }
 }

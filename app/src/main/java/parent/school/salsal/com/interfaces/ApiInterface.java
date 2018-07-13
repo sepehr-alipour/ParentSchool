@@ -75,8 +75,8 @@ public interface ApiInterface {
     @GET(URL_V1 + "/teacherProfile/{id}")
     Call<TeacherProfileRes> getTeacherProfile(@Path("id") String id, @Query("token") String token);
 
-    @GET(URL_V1 + "/schoolList/{query}")
-    Call<SchoolListRes> getSchools(@Path("query") String query);
+    @GET(URL_V1 + "/schools/name")
+    Call<List<SchoolListRes>> getSchools(@Query("query") String query);
 
     @GET(URL_V1 + "/notification")
     Call<NotificationRes> getNotifications(@Query("token") String token);

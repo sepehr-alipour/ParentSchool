@@ -18,9 +18,9 @@ android {
         }
         debug {
 
-            resValue "string", "BASE_URL","192.168.1.7"// "192.168.2.119:80"
+            resValue "string", "BASE_URL","http://192.168.1.7"// "192.168.2.119:80"
             resValue "string", "SCHOOL_NAME", "test"
-            resValue "string", "USER_NAME", "teacher"
+            resValue "string", "USER_NAME", "parent"
             resValue "string", "PASSWORD", "123"
 
         }
@@ -41,7 +41,8 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.aurelhubert:ahbottomnavigation:2.2.0'
     implementation "com.orhanobut:hawk:2.0.1"
-
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.16'
     implementation('com.github.bumptech.glide:glide:4.7.1') {
         exclude group: "com.android.support"
     }

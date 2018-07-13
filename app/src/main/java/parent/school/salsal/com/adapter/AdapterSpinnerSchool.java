@@ -7,13 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.CompoundButton;
 import android.widget.Filter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+
 import java.util.ArrayList;
-import java.util.BitSet;
 
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.model.SchoolListRes;
@@ -41,9 +42,18 @@ public class AdapterSpinnerSchool extends ArrayAdapter<SchoolListRes> {
         TextView txtTitle = convertView.findViewById(R.id.txtName);
         ImageView imgLogo = convertView.findViewById(R.id.imgLogo);
         txtTitle.setText(item.getName());
-        imgLogo.setImageResource(item.getLogo());
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.drawable.ic_action_profile);
+        Glide.with(imgLogo.getContext())
+                .setDefaultRequestOptions(requestOptions)
+                .load(item.getLogo())
+                .into(imgLogo);
         return convertView;
 
+    }
+
+    public SchoolListRes getItem(int position) {
+        return items.get(position);
     }
 
     @Override
