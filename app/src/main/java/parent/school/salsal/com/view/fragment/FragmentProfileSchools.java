@@ -1,6 +1,5 @@
 package parent.school.salsal.com.view.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -17,14 +16,9 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.adapter.AdapterSchools;
-import parent.school.salsal.com.adapter.OnReceiverClickListener;
-import parent.school.salsal.com.adapter.AdapterSpinnerSchool;
 import parent.school.salsal.com.interfaces.OnDataSelectListener;
-import parent.school.salsal.com.model.CourseRes;
-import parent.school.salsal.com.model.ReceiverMessageItem;
-import parent.school.salsal.com.model.SchoolListRes;
-import parent.school.salsal.com.model.StudentRes;
-import parent.school.salsal.com.view.activity.ActivityActivities;
+import parent.school.salsal.com.model.LoginReq;
+import parent.school.salsal.com.util.PreferenceManager;
 
 public class FragmentProfileSchools extends BaseFragment implements OnDataSelectListener {
 
@@ -43,14 +37,7 @@ public class FragmentProfileSchools extends BaseFragment implements OnDataSelect
         View view = inflater.inflate(R.layout.fragment_schools, container, false);
         unbinder = ButterKnife.bind(this, view);
 
-        String[] schools = getResources().getStringArray(R.array.schools);
-        ArrayList<SchoolListRes> listSchools = new ArrayList<>();
-        for (int i = 0; i < schools.length; i++) {
-            SchoolListRes schoolListRes = new SchoolListRes();
-            schoolListRes.setName(schools[i]);
-           // schoolListRes.setLogo(R.drawable.logo);
-            listSchools.add(schoolListRes);
-        }
+        ArrayList<LoginReq> listSchools = PreferenceManager.getSchoolConnections();
         AdapterSchools adapterSchoolList = new AdapterSchools(listSchools, this);
         list.setLayoutManager(new LinearLayoutManager(getContext()));
         list.setAdapter(adapterSchoolList);

@@ -20,6 +20,7 @@ import parent.school.salsal.com.R;
 import parent.school.salsal.com.adapter.AdapterPagerProfile;
 import parent.school.salsal.com.view.activity.ActivityChildren;
 import parent.school.salsal.com.view.activity.ActivityEditProfile;
+import parent.school.salsal.com.view.activity.ActivitySchools;
 
 public class FragmentProfile extends Fragment implements View.OnClickListener {
 
@@ -96,7 +97,7 @@ public class FragmentProfile extends Fragment implements View.OnClickListener {
                 startActivity(new Intent(getContext(), ActivityEditProfile.class));
                 break;
             default:
-                startActivity(new Intent(getContext(), ActivityChildren.class));
+                startActivity(new Intent(getContext(), ActivitySchools.class));
 
 
         }

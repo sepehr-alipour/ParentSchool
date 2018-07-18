@@ -103,8 +103,10 @@ public class ActivitySchools extends BaseActivity {
                     loginReq.setChecked(true);
                     loginReq.setSchoolName(selectedSchool.getName());
                     loginReq.setId(PreferenceManager.getSchoolConnections().size() + 1);
-                    if (PreferenceManager.addSchoolConnection(loginReq))
+                    //todo
+                    if (true){//PreferenceManager.addSchoolConnection(loginReq)) {
                         startActivity(new Intent(ActivitySchools.this, ActivityLogin.class));
+                    }
                     Toast.makeText(ActivitySchools.this, R.string.toast_warning_duplicate_school, Toast.LENGTH_SHORT).show();
                 } else
                     Toast.makeText(ActivitySchools.this, R.string.toast_error_school, Toast.LENGTH_SHORT).show();

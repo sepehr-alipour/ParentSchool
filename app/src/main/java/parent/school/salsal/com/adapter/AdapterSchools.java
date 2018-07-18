@@ -14,14 +14,15 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.interfaces.OnDataSelectListener;
+import parent.school.salsal.com.model.LoginReq;
 import parent.school.salsal.com.model.SchoolListRes;
 
 public class AdapterSchools extends RecyclerView.Adapter<AdapterSchools.ViewHolder> {
 
-    private final ArrayList<SchoolListRes> listSchool;
+    private final ArrayList<LoginReq> listSchool;
     private OnDataSelectListener viewClickListener;
 
-    public AdapterSchools(ArrayList<SchoolListRes> schools, OnDataSelectListener listener) {
+    public AdapterSchools(ArrayList<LoginReq> schools, OnDataSelectListener listener) {
         listSchool = schools;
         viewClickListener = listener;
     }
@@ -36,8 +37,8 @@ public class AdapterSchools extends RecyclerView.Adapter<AdapterSchools.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        SchoolListRes itemList = listSchool.get(position);
-        holder.txtName.setText(itemList.getName());
+        LoginReq itemList = listSchool.get(position);
+        holder.txtName.setText(itemList.getSchoolName());
         if (itemList.isChecked())
             holder.imgChecked.setVisibility(View.VISIBLE);
         else holder.imgChecked.setVisibility(View.GONE);
