@@ -8,8 +8,6 @@ import com.orhanobut.hawk.Hawk;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import parent.school.salsal.com.BuildConfig;
-import parent.school.salsal.com.R;
 import parent.school.salsal.com.model.LoginReq;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -23,10 +21,11 @@ public class PreferenceManager {
     // public static final String BASE_URL = "http://192.168.1.12:80";
     //public static final String BASE_URL = "http://192.168.43.114:80";
     public static final int PER_PAGE = 10;
-    private static final String PRE_USER_PROFILE = "user_profile";
+    private static final String PRE_USER_PROFILE = "user_profile_parent";
     public static final String PREF_TOKEN = "token";
     public static final String PREF_SCHOOL_CONNECTION = "connections";
-    public static final String PREF_ID = "id";
+    public static final String PREF_PARENT_ID = "parent_id";
+    public static final String PREF_STUDENT_ID = "student_id";
     public static final String PREF_COURSE_ID = "course_id";
     public static final String PREF_CLASS_ID = "class_id";
 
@@ -46,6 +45,17 @@ public class PreferenceManager {
                 return;
             }
         }
+    }
+
+    public static void setCurentStudent(Context context, String id) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(PRE_USER_PROFILE, MODE_PRIVATE).edit();
+        editor.putString(PREF_STUDENT_ID, id);
+        editor.apply();
+    }
+
+    public static String getCurrentStudentId(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(PRE_USER_PROFILE, MODE_PRIVATE);
+        return prefs.getString(PREF_STUDENT_ID, null);
     }
 
     public static boolean addSchoolConnection(LoginReq schoolConnection) {
@@ -105,7 +115,7 @@ public class PreferenceManager {
     public static void SaveUserProfile(Context context, String id, String token) {
         SharedPreferences.Editor editor = context.getSharedPreferences(PRE_USER_PROFILE, MODE_PRIVATE).edit();
         editor.putString(PREF_TOKEN, token);
-        editor.putString(PREF_ID, id);
+        editor.putString(PREF_PARENT_ID, id);
         editor.apply();
     }
 
@@ -135,7 +145,7 @@ public class PreferenceManager {
     public static HashMap<String, String> getUserProfile(Context context) {
         HashMap<String, String> profile = new HashMap<>();
         SharedPreferences prefs = context.getSharedPreferences(PRE_USER_PROFILE, MODE_PRIVATE);
-        profile.put(PREF_ID, prefs.getString(PREF_ID, ""));
+        profile.put(PREF_PARENT_ID, prefs.getString(PREF_PARENT_ID, ""));
         profile.put(PREF_TOKEN, prefs.getString(PREF_TOKEN, ""));
         return profile;
     }

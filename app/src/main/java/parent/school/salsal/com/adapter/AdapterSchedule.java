@@ -35,8 +35,8 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         ScheduleRes.DataBean itemList = listSchedule.get(position);
-        holder.txtClass.setText("کلاس");//itemList.getClassRoom().getTitle());
-        holder.txtCourse.setText("درس");//itemList.getCourse().getTitle());
+        holder.txtClass.setText(itemList.getName());
+        holder.txtCourse.setText(itemList.getTitle());
         holder.txtPriority.setText(holder.txtClass.getContext().getResources().getString(R.string.priority, itemList.getPriority()));
         if (position > 0 && itemList.getDayOfWeek() == listSchedule.get(position - 1).getDayOfWeek()) {
             holder.txtDay.setVisibility(View.GONE);

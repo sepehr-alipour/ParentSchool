@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import parent.school.salsal.com.view.fragment.FragmentAttendance;
 import parent.school.salsal.com.view.fragment.FragmentProfileParent;
 import parent.school.salsal.com.view.fragment.FragmentProfileSchools;
 import parent.school.salsal.com.view.fragment.FragmentProfileStudent;
@@ -25,7 +26,7 @@ public class AdapterPagerSchedule extends FragmentPagerAdapter {
             case POSITION_SCHEDULE_WEEKLY:
                 return FragmentScheduleWeekly.newInstance();
             case POSITION_ATTENDANCE:
-                return FragmentScheduleWeekly.newInstance();
+                return FragmentAttendance.newInstance();
             default:
                 FragmentProfileParent.newInstance();
         }
