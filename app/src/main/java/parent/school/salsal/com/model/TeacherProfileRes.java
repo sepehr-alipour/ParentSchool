@@ -4,151 +4,167 @@ import com.google.gson.annotations.SerializedName;
 
 public class TeacherProfileRes {
 
-
     /**
-     * id : 2
-     * education : null
-     * name : sepehr
-     * birth_date : 1369-10-11
-     * image_url : null
-     * rate : null
-     * email : aliahmadi@gmail.com
-     * phone_number : 09363531363
-     * national_code : 4900191051
-     * user_id : 1
-     * created_at : 2018-05-23 16:05:34
-     * updated_at : 2018-05-23 16:05:34
-     * title : Chemistry
+     * msg : ok
+     * data : {"id":2,"education":null,"name":"saeed","birth_date":null,"image_url":"https://pickaface.net/gallery/avatar/unr_paii_180627_0934_vpwcm.png","rate":null,"email":null,"phone_number":null,"national_code":null,"user_id":2,"created_at":"2018-05-23 15:16:00","updated_at":"2018-05-23 15:16:00"}
      */
 
-    @SerializedName("id")
-    private int id;
-    @SerializedName("education")
-    private Object education;
-    @SerializedName("name")
-    private String name;
-    @SerializedName("birth_date")
-    private String birthDate;
-    @SerializedName("image_url")
-    private Object imageUrl;
-    @SerializedName("rate")
-    private Object rate;
-    @SerializedName("email")
-    private String email;
-    @SerializedName("phone_number")
-    private String phoneNumber;
-    @SerializedName("national_code")
-    private String nationalCode;
-    @SerializedName("user_id")
-    private int userId;
-    @SerializedName("created_at")
-    private String createdAt;
-    @SerializedName("updated_at")
-    private String updatedAt;
-    @SerializedName("title")
-    private String title;
+    @SerializedName("msg")
+    private String msg;
+    @SerializedName("data")
+    private DataBean data;
 
-    public int getId() {
-        return id;
+    public String getMsg() {
+        return msg;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setMsg(String msg) {
+        this.msg = msg;
     }
 
-    public Object getEducation() {
-        return education;
+    public DataBean getData() {
+        return data;
     }
 
-    public void setEducation(Object education) {
-        this.education = education;
+    public void setData(DataBean data) {
+        this.data = data;
     }
 
-    public String getName() {
-        return name;
-    }
+    public static class DataBean {
+        /**
+         * id : 2
+         * education : null
+         * name : saeed
+         * birth_date : null
+         * image_url : https://pickaface.net/gallery/avatar/unr_paii_180627_0934_vpwcm.png
+         * rate : null
+         * email : null
+         * phone_number : null
+         * national_code : null
+         * user_id : 2
+         * created_at : 2018-05-23 15:16:00
+         * updated_at : 2018-05-23 15:16:00
+         */
 
-    public void setName(String name) {
-        this.name = name;
-    }
+        @SerializedName("id")
+        private int id;
+        @SerializedName("education")
+        private String education;
+        @SerializedName("name")
+        private String name;
+        @SerializedName("birth_date")
+        private String birthDate;
+        @SerializedName("image_url")
+        private String imageUrl;
+        @SerializedName("rate")
+        private float rate;
+        @SerializedName("email")
+        private String email;
+        @SerializedName("phone_number")
+        private String phoneNumber;
+        @SerializedName("national_code")
+        private String nationalCode;
+        @SerializedName("user_id")
+        private int userId;
+        @SerializedName("created_at")
+        private String createdAt;
+        @SerializedName("updated_at")
+        private String updatedAt;
 
-    public String getBirthDate() {
-        return birthDate;
-    }
+        public int getId() {
+            return id;
+        }
 
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
-    }
+        public void setId(int id) {
+            this.id = id;
+        }
 
-    public Object getImageUrl() {
-        return imageUrl;
-    }
+        public String getEducation() {
+            return education;
+        }
 
-    public void setImageUrl(Object imageUrl) {
-        this.imageUrl = imageUrl;
-    }
+        public void setEducation(String education) {
+            this.education = education;
+        }
 
-    public Object getRate() {
-        return rate;
-    }
+        public String getName() {
+            return name;
+        }
 
-    public void setRate(Object rate) {
-        this.rate = rate;
-    }
+        public void setName(String name) {
+            this.name = name;
+        }
 
-    public String getEmail() {
-        return email;
-    }
+        public String getBirthDate() {
+            return birthDate;
+        }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+        public void setBirthDate(String birthDate) {
+            this.birthDate = birthDate;
+        }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
+        public String getImageUrl() {
+            return imageUrl;
+        }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+        public void setImageUrl(String imageUrl) {
+            this.imageUrl = imageUrl;
+        }
 
-    public String getNationalCode() {
-        return nationalCode;
-    }
+        public float getRate() {
+            return rate;
+        }
 
-    public void setNationalCode(String nationalCode) {
-        this.nationalCode = nationalCode;
-    }
+        public void setRate(float rate) {
+            this.rate = rate;
+        }
 
-    public int getUserId() {
-        return userId;
-    }
+        public String getEmail() {
+            return email;
+        }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
+        public void setEmail(String email) {
+            this.email = email;
+        }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
+        public String getPhoneNumber() {
+            return phoneNumber;
+        }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
+        public void setPhoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
 
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
+        public String getNationalCode() {
+            return nationalCode;
+        }
 
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+        public void setNationalCode(String nationalCode) {
+            this.nationalCode = nationalCode;
+        }
 
-    public String getTitle() {
-        return title;
-    }
+        public int getUserId() {
+            return userId;
+        }
 
-    public void setTitle(String title) {
-        this.title = title;
+        public void setUserId(int userId) {
+            this.userId = userId;
+        }
+
+        public String getCreatedAt() {
+            return createdAt;
+        }
+
+        public void setCreatedAt(String createdAt) {
+            this.createdAt = createdAt;
+        }
+
+        public String getUpdatedAt() {
+            return updatedAt;
+        }
+
+        public void setUpdatedAt(String updatedAt) {
+            this.updatedAt = updatedAt;
+        }
     }
 }

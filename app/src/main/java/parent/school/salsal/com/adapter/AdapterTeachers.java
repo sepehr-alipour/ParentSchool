@@ -12,6 +12,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -19,13 +20,14 @@ import parent.school.salsal.com.R;
 import parent.school.salsal.com.interfaces.OnDataSelectListener;
 import parent.school.salsal.com.model.SchoolListRes;
 import parent.school.salsal.com.model.TeacherProfileRes;
+import parent.school.salsal.com.model.TeachersProfileRes;
 
 public class AdapterTeachers extends RecyclerView.Adapter<AdapterTeachers.ViewHolder> {
 
-    private final ArrayList<TeacherProfileRes> listSchool;
+    private final List<TeachersProfileRes.DataBean> listSchool;
     private OnDataSelectListener viewClickListener;
 
-    public AdapterTeachers(ArrayList<TeacherProfileRes> schools, OnDataSelectListener listener) {
+    public AdapterTeachers(List<TeachersProfileRes.DataBean> schools, OnDataSelectListener listener) {
         listSchool = schools;
         viewClickListener = listener;
     }
@@ -40,7 +42,7 @@ public class AdapterTeachers extends RecyclerView.Adapter<AdapterTeachers.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        TeacherProfileRes itemList = listSchool.get(position);
+        TeachersProfileRes.DataBean itemList = listSchool.get(position);
         holder.txtName.setText(itemList.getName());
         RequestOptions requestOptions = new RequestOptions();
         requestOptions.placeholder(R.drawable.ic_action_profile);

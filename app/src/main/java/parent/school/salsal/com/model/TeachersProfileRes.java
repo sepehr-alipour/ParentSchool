@@ -2,18 +2,20 @@ package parent.school.salsal.com.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class StudentProfileRes {
+import java.util.List;
+
+public class TeachersProfileRes {
 
 
     /**
      * msg : ok
-     * data : {"id":3,"name":"sadegh","birth_date":null,"image_url":null,"email":null,"phone_number":null,"national_code":null,"user_id":7,"parent_id":1,"created_at":"2018-05-23 15:17:16","updated_at":"2018-05-23 15:17:16"}
+     * data : [{"id":1,"education":null,"name":"sepehr","birth_date":"1369-10-11","image_url":null,"rate":null,"email":"aliahmadi@gmail.com","phone_number":"09363531363","national_code":"4900191051","user_id":1,"created_at":"2018-05-23 16:05:21","updated_at":"2018-05-23 16:05:21","title":"Math"},{"id":2,"education":null,"name":"sepehr","birth_date":"1369-10-11","image_url":null,"rate":null,"email":"aliahmadi@gmail.com","phone_number":"09363531363","national_code":"4900191051","user_id":1,"created_at":"2018-05-23 16:05:34","updated_at":"2018-05-23 16:05:34","title":"Chemistry"}]
      */
 
     @SerializedName("msg")
     private String msg;
     @SerializedName("data")
-    private DataBean data;
+    private List<DataBean> data;
 
     public String getMsg() {
         return msg;
@@ -23,51 +25,57 @@ public class StudentProfileRes {
         this.msg = msg;
     }
 
-    public DataBean getData() {
+    public List<DataBean> getData() {
         return data;
     }
 
-    public void setData(DataBean data) {
+    public void setData(List<DataBean> data) {
         this.data = data;
     }
 
     public static class DataBean {
         /**
-         * id : 3
-         * name : sadegh
-         * birth_date : null
+         * id : 1
+         * education : null
+         * name : sepehr
+         * birth_date : 1369-10-11
          * image_url : null
-         * email : null
-         * phone_number : null
-         * national_code : null
-         * user_id : 7
-         * parent_id : 1
-         * created_at : 2018-05-23 15:17:16
-         * updated_at : 2018-05-23 15:17:16
+         * rate : null
+         * email : aliahmadi@gmail.com
+         * phone_number : 09363531363
+         * national_code : 4900191051
+         * user_id : 1
+         * created_at : 2018-05-23 16:05:21
+         * updated_at : 2018-05-23 16:05:21
+         * title : Math
          */
 
         @SerializedName("id")
         private int id;
+        @SerializedName("education")
+        private Object education;
         @SerializedName("name")
         private String name;
         @SerializedName("birth_date")
-        private Object birthDate;
+        private String birthDate;
         @SerializedName("image_url")
         private Object imageUrl;
+        @SerializedName("rate")
+        private Object rate;
         @SerializedName("email")
-        private Object email;
+        private String email;
         @SerializedName("phone_number")
-        private Object phoneNumber;
+        private String phoneNumber;
         @SerializedName("national_code")
-        private Object nationalCode;
+        private String nationalCode;
         @SerializedName("user_id")
         private int userId;
-        @SerializedName("parent_id")
-        private int parentId;
         @SerializedName("created_at")
         private String createdAt;
         @SerializedName("updated_at")
         private String updatedAt;
+        @SerializedName("title")
+        private String title;
 
         public int getId() {
             return id;
@@ -75,6 +83,14 @@ public class StudentProfileRes {
 
         public void setId(int id) {
             this.id = id;
+        }
+
+        public Object getEducation() {
+            return education;
+        }
+
+        public void setEducation(Object education) {
+            this.education = education;
         }
 
         public String getName() {
@@ -85,11 +101,11 @@ public class StudentProfileRes {
             this.name = name;
         }
 
-        public Object getBirthDate() {
+        public String getBirthDate() {
             return birthDate;
         }
 
-        public void setBirthDate(Object birthDate) {
+        public void setBirthDate(String birthDate) {
             this.birthDate = birthDate;
         }
 
@@ -101,27 +117,35 @@ public class StudentProfileRes {
             this.imageUrl = imageUrl;
         }
 
-        public Object getEmail() {
+        public Object getRate() {
+            return rate;
+        }
+
+        public void setRate(Object rate) {
+            this.rate = rate;
+        }
+
+        public String getEmail() {
             return email;
         }
 
-        public void setEmail(Object email) {
+        public void setEmail(String email) {
             this.email = email;
         }
 
-        public Object getPhoneNumber() {
+        public String getPhoneNumber() {
             return phoneNumber;
         }
 
-        public void setPhoneNumber(Object phoneNumber) {
+        public void setPhoneNumber(String phoneNumber) {
             this.phoneNumber = phoneNumber;
         }
 
-        public Object getNationalCode() {
+        public String getNationalCode() {
             return nationalCode;
         }
 
-        public void setNationalCode(Object nationalCode) {
+        public void setNationalCode(String nationalCode) {
             this.nationalCode = nationalCode;
         }
 
@@ -131,14 +155,6 @@ public class StudentProfileRes {
 
         public void setUserId(int userId) {
             this.userId = userId;
-        }
-
-        public int getParentId() {
-            return parentId;
-        }
-
-        public void setParentId(int parentId) {
-            this.parentId = parentId;
         }
 
         public String getCreatedAt() {
@@ -155,6 +171,14 @@ public class StudentProfileRes {
 
         public void setUpdatedAt(String updatedAt) {
             this.updatedAt = updatedAt;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
         }
     }
 }

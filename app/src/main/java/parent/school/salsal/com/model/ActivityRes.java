@@ -9,7 +9,7 @@ public class ActivityRes {
 
     /**
      * msg : ok
-     * data : [{"id":2,"teacher_course_class_id":1,"title":"title1","desc":"acdesc1","expire_date":"1396-12-01","file_address":"url","atype_id":1,"created_at":"2018-05-21 08:21:15","updated_at":"2018-05-21 08:21:15"},{"id":3,"teacher_course_class_id":1,"title":"title1","desc":"acdesc1","expire_date":"1396-12-01","file_address":"url","atype_id":1,"created_at":"2018-05-21 08:25:06","updated_at":"2018-05-21 08:25:06"},{"id":4,"teacher_course_class_id":1,"title":"title1","desc":"acdesc1","expire_date":"1396-12-01","file_address":"url","atype_id":1,"created_at":"2018-05-21 08:35:24","updated_at":"2018-05-21 08:35:24"},{"id":5,"teacher_course_class_id":1,"title":"title1","desc":"acdesc1","expire_date":"1396-12-01","file_address":"url","atype_id":1,"created_at":"2018-05-21 08:36:20","updated_at":"2018-05-21 08:36:20"},{"id":6,"teacher_course_class_id":1,"title":"title1","desc":"acdesc1","expire_date":"1396-12-01","file_address":"url","atype_id":1,"created_at":"2018-05-21 08:37:26","updated_at":"2018-05-21 08:37:26"}]
+     * data : [{"id":2,"teacher_course_class_id":2,"title":"title1","desc":"acdesc1","expire_date":"1396-12-01","file_address":"url","atype_id":1,"created_at":"2018-07-09 14:43:44","updated_at":"2018-07-09 14:43:44","pivot":{"student_profile_id":3,"activity_id":2,"created_at":"2018-07-09 14:43:44","updated_at":"2018-07-09 14:43:44"}},{"id":3,"teacher_course_class_id":2,"title":"title2","desc":"acdesc1","expire_date":"1396-12-01","file_address":"url","atype_id":1,"created_at":"2018-07-09 14:44:10","updated_at":"2018-07-09 14:44:10","pivot":{"student_profile_id":3,"activity_id":3,"created_at":"2018-07-09 14:44:10","updated_at":"2018-07-09 14:44:10"}},{"id":4,"teacher_course_class_id":2,"title":"title3","desc":"acdesc1","expire_date":"1396-12-01","file_address":"url","atype_id":1,"created_at":"2018-07-09 14:44:15","updated_at":"2018-07-09 14:44:15","pivot":{"student_profile_id":3,"activity_id":4,"created_at":"2018-07-09 14:44:15","updated_at":"2018-07-09 14:44:15"}}]
      */
 
     @SerializedName("msg")
@@ -36,14 +36,15 @@ public class ActivityRes {
     public static class DataBean {
         /**
          * id : 2
-         * teacher_course_class_id : 1
+         * teacher_course_class_id : 2
          * title : title1
          * desc : acdesc1
          * expire_date : 1396-12-01
          * file_address : url
          * atype_id : 1
-         * created_at : 2018-05-21 08:21:15
-         * updated_at : 2018-05-21 08:21:15
+         * created_at : 2018-07-09 14:43:44
+         * updated_at : 2018-07-09 14:43:44
+         * pivot : {"student_profile_id":3,"activity_id":2,"created_at":"2018-07-09 14:43:44","updated_at":"2018-07-09 14:43:44"}
          */
 
         @SerializedName("id")
@@ -64,6 +65,8 @@ public class ActivityRes {
         private String createdAt;
         @SerializedName("updated_at")
         private String updatedAt;
+        @SerializedName("pivot")
+        private PivotBean pivot;
 
         public int getId() {
             return id;
@@ -135,6 +138,64 @@ public class ActivityRes {
 
         public void setUpdatedAt(String updatedAt) {
             this.updatedAt = updatedAt;
+        }
+
+        public PivotBean getPivot() {
+            return pivot;
+        }
+
+        public void setPivot(PivotBean pivot) {
+            this.pivot = pivot;
+        }
+
+        public static class PivotBean {
+            /**
+             * student_profile_id : 3
+             * activity_id : 2
+             * created_at : 2018-07-09 14:43:44
+             * updated_at : 2018-07-09 14:43:44
+             */
+
+            @SerializedName("student_profile_id")
+            private int studentProfileId;
+            @SerializedName("activity_id")
+            private int activityId;
+            @SerializedName("created_at")
+            private String createdAt;
+            @SerializedName("updated_at")
+            private String updatedAt;
+
+            public int getStudentProfileId() {
+                return studentProfileId;
+            }
+
+            public void setStudentProfileId(int studentProfileId) {
+                this.studentProfileId = studentProfileId;
+            }
+
+            public int getActivityId() {
+                return activityId;
+            }
+
+            public void setActivityId(int activityId) {
+                this.activityId = activityId;
+            }
+
+            public String getCreatedAt() {
+                return createdAt;
+            }
+
+            public void setCreatedAt(String createdAt) {
+                this.createdAt = createdAt;
+            }
+
+            public String getUpdatedAt() {
+                return updatedAt;
+            }
+
+            public void setUpdatedAt(String updatedAt) {
+                this.updatedAt = updatedAt;
+            }
         }
     }
 }
