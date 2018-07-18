@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/toolbar_layout" />
+
+            <include layout="@layout/list_item_notification" />
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/edtResponse"
+                style="@style/EditTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/space_5_dp"
+                android:layout_marginRight="@dimen/space_5_dp"
+                android:hint="متن پاسخ..." />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_20_dp"
+                android:orientation="horizontal">
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btnDownload"
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="@dimen/space_10_dp"
+                    android:layout_marginLeft="@dimen/space_5_dp"
+                    android:layout_marginRight="@dimen/space_5_dp"
+                    android:layout_marginTop="@dimen/space_10_dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_pink_fill"
+                    android:inputType="text"
+                    android:text="ارسال فایل"
+                    android:textColor="@android:color/white" />
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/btnAttach"
+                    style="@style/Base.Widget.AppCompat.Button.Colored"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginBottom="@dimen/space_10_dp"
+                    android:layout_marginLeft="@dimen/space_5_dp"
+                    android:layout_marginRight="@dimen/space_5_dp"
+                    android:layout_marginTop="@dimen/space_10_dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_pink_fill"
+                    android:inputType="text"
+                    android:text="دریافت فایل"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+
+
+            <android.support.v7.widget.AppCompatButton
+                android:id="@+id/btnSend"
+                style="@style/Base.Widget.AppCompat.Button.Colored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="@dimen/space_10_dp"
+                android:layout_marginLeft="@dimen/space_5_dp"
+                android:layout_marginRight="@dimen/space_5_dp"
+                android:layout_marginTop="@dimen/space_10_dp"
+                android:background="@drawable/shape_pink_blank"
+                android:inputType="text"
+                android:text="ارسال پاسخ"
+                android:textColor="@color/colorPrimary" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

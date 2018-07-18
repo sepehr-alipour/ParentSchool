@@ -22,15 +22,21 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import parent.school.salsal.com.R;
+import parent.school.salsal.com.adapter.AdapterTeachers;
 import parent.school.salsal.com.adapter.OnReceiverClickListener;
 import parent.school.salsal.com.interfaces.OnDataSelectListener;
 import parent.school.salsal.com.model.CourseRes;
 import parent.school.salsal.com.model.ReceiverMessageItem;
 import parent.school.salsal.com.model.StudentRes;
+import parent.school.salsal.com.model.TeachersProfileRes;
 import parent.school.salsal.com.util.PreferenceManager;
+import parent.school.salsal.com.webservice.APIErrorResult;
+import parent.school.salsal.com.webservice.CallbackHandler;
+import parent.school.salsal.com.webservice.WebServiceHelper;
+import retrofit2.Response;
 
 @SuppressLint("ValidFragment")
-public class BottomSheetFragmentStudents extends BottomSheetDialogFragment implements OnReceiverClickListener, View.OnClickListener,OnDataSelectListener {
+public class BottomSheetFragmentStudents extends BottomSheetDialogFragment implements OnReceiverClickListener, View.OnClickListener, OnDataSelectListener {
 
 
     private OnDataSelectListener selectDataListener;
@@ -93,7 +99,20 @@ public class BottomSheetFragmentStudents extends BottomSheetDialogFragment imple
     }
 
     private void getTeacherList() {
+        WebServiceHelper.get(getContext()).getTeachers(PreferenceManager.getCurrentStudentId(getContext()),
+                PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_TOKEN)).enqueue(new CallbackHandler<TeachersProfileRes>(getContext(), true, true) {
+            @Override
+            public void onSuccess(Response<TeachersProfileRes> response) {
+                AdapterTeachers adapterSchoolList = new AdapterTeachers(response.body().getData(), BottomSheetFragmentStudents.this);
+                list.setLayoutManager(new LinearLayoutManager(getContext()));
+                list.setAdapter(adapterSchoolList);
+            }
 
+            @Override
+            public void onFailed(APIErrorResult errorResult) {
+
+            }
+        });
 
     }
 
@@ -137,6 +156,7 @@ public class BottomSheetFragmentStudents extends BottomSheetDialogFragment imple
 
     @Override
     public void dataSelected(Object data) {
+        selectDataListener.dataSelected(data);
 
     }
 }

@@ -99,7 +99,7 @@ public class FragmentNotifications extends BaseFragment implements OnNotifClickL
 
     @Override
     public void clicked(NotificationRes.DataBean notification) {
-        if ((notification.getUserId() + "").equalsIgnoreCase(PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_ID))) {
+        if ((notification.getUserId() + "").equalsIgnoreCase(PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_PARENT_ID))) {
             return;
         }
         Intent intent = new Intent(getContext(), ActivityNotifDetail.class);
@@ -126,19 +126,6 @@ public class FragmentNotifications extends BaseFragment implements OnNotifClickL
         }
     }
 
-    private ArrayList<NotificationRes.DataBean> getNotifs() {
-        ArrayList<NotificationRes.DataBean> notifs = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            NotificationRes.DataBean notifData = new NotificationRes.DataBean();
-            notifData.setMessage("پیام" + i);
-            notifData.setTitle("عنوان" + i);
-            notifData.setType(1);
-            notifData.setCreatedAt("12/02/1397");
-            notifData.setId(i);
-            notifs.add(notifData);
-        }
-        return notifs;
-    }
 
     private void setStyle(int pos) {
         if (pos == 0) {
@@ -146,9 +133,8 @@ public class FragmentNotifications extends BaseFragment implements OnNotifClickL
             receivedMessageTab.setTextColor(getResources().getColor(android.R.color.white));
             sentMessageTab.setBackgroundResource(R.drawable.shape_pink_blank);
             sentMessageTab.setTextColor(getResources().getColor(R.color.colorPrimary));
-            notifList.setAdapter(new AdapterNotif(getNotifs(), FragmentNotifications.this));
 
-         /*   WebServiceHelper.get(getContext()).getNotifications(PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_TOKEN))
+            WebServiceHelper.get(getContext()).getNotifications(PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_TOKEN))
                     .enqueue(new CallbackHandler<NotificationRes>(getContext(), true, true) {
                         @Override
                         public void onSuccess(Response<NotificationRes> response) {
@@ -159,15 +145,14 @@ public class FragmentNotifications extends BaseFragment implements OnNotifClickL
                         public void onFailed(APIErrorResult errorResult) {
 
                         }
-                    });*/
+                    });
         } else {
             sentMessageTab.setBackgroundResource(R.drawable.shape_pink_fill);
             sentMessageTab.setTextColor(getResources().getColor(android.R.color.white));
             receivedMessageTab.setBackgroundResource(R.drawable.shape_pink_blank);
             receivedMessageTab.setTextColor(getResources().getColor(R.color.colorPrimary));
 
-            notifList.setAdapter(new AdapterNotif(getNotifs(), FragmentNotifications.this));
-           /* WebServiceHelper.get(getContext()).getSentBoxNotifications(PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_TOKEN))
+            WebServiceHelper.get(getContext()).getSentBoxNotifications(PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_TOKEN))
                     .enqueue(new CallbackHandler<NotificationRes>(getContext(), true, true) {
                         @Override
                         public void onSuccess(Response<NotificationRes> response) {
@@ -178,7 +163,7 @@ public class FragmentNotifications extends BaseFragment implements OnNotifClickL
                         public void onFailed(APIErrorResult errorResult) {
 
                         }
-                    });*/
+                    });
         }
     }
 }

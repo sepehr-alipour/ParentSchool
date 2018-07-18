@@ -63,7 +63,7 @@ public class ActivityLogin extends BaseActivity implements View.OnClickListener 
 
             Toast.makeText(ActivityLogin.this, getString(R.string.toast_empty_edittext), Toast.LENGTH_SHORT).show();
         } else {
-            final LoginReq loginReq =PreferenceManager.getSchoolConnection(PreferenceManager.getSchoolConnections().size());
+            final LoginReq loginReq = PreferenceManager.getSchoolConnection(PreferenceManager.getSchoolConnections().size());
             loginReq.setUsername(edtUsername.getText().toString());
             loginReq.setPassword(edtPassword.getText().toString());
             if (inEdit) {
@@ -83,10 +83,8 @@ public class ActivityLogin extends BaseActivity implements View.OnClickListener 
                     @Override
                     public void onSuccess(Response<LoginRes> response) {
                         PreferenceManager.SaveUserProfile(ActivityLogin.this, response.body().getData().getUserId(), response.body().getData().getToken());
-                        Intent intent = new Intent(ActivityLogin.this, ActivityMain.class);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        Intent intent = new Intent(ActivityLogin.this, ActivityChildren.class);
                         startActivity(intent);
-                        finish();
                     }
 
                     @Override

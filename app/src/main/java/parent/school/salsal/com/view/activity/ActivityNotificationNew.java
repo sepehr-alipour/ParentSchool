@@ -29,6 +29,7 @@ import parent.school.salsal.com.model.NotificationDetailRes;
 import parent.school.salsal.com.model.ReceiverMessageItem;
 import parent.school.salsal.com.model.SendNotificationReq;
 import parent.school.salsal.com.model.StudentRes;
+import parent.school.salsal.com.model.TeachersProfileRes;
 import parent.school.salsal.com.util.PreferenceManager;
 import parent.school.salsal.com.view.fragment.BottomSheetFragmentStudents;
 import parent.school.salsal.com.webservice.APIErrorResult;
@@ -40,7 +41,7 @@ import retrofit2.Response;
  * Created by Sepehr on 12/4/2017.
  */
 
-public class ActivityNotificationNew extends BaseActivity implements View.OnClickListener, OnReceiverClickListener,OnDataSelectListener {
+public class ActivityNotificationNew extends BaseActivity implements View.OnClickListener, OnReceiverClickListener, OnDataSelectListener {
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.edtTitle)
@@ -123,14 +124,14 @@ public class ActivityNotificationNew extends BaseActivity implements View.OnClic
                 sendNotificationReq.setMessage(edtMessage.getText().toString());
                 sendNotificationReq.setTitle(edtTitle.getText().toString());
                 sendNotificationReq.setUserIds(users);
-                //  sendNotificationReq.setType(((SpnType) (spnType.getSelectedItem())).getId());
+                sendNotificationReq.setType("1");
                 sendNotificationReq.setFileUrl("http://google.com");
                 sendNotificationReq.setRecipientType(sendNotificationReq.RECIPIENT_TYPE_UNIT);
                 sendNotif(sendNotificationReq);
 
                 break;
             case 1:
-                BottomSheetFragmentStudents bottomSheetFragmentStudents = new BottomSheetFragmentStudents(BottomSheetFragmentStudents.TYPE_COURSES, true, this);
+                BottomSheetFragmentStudents bottomSheetFragmentStudents = new BottomSheetFragmentStudents(BottomSheetFragmentStudents.TYEP_TEACHERS, true, this);
                 bottomSheetFragmentStudents.show(getSupportFragmentManager(), "students");
                 break;
            /* case 2:
@@ -170,6 +171,18 @@ public class ActivityNotificationNew extends BaseActivity implements View.OnClic
 
     @Override
     public void dataSelected(Object data) {
+        SendNotificationReq notificationReq = new SendNotificationReq();
+        List<Integer> users = new ArrayList<>();
+        users.add(((TeachersProfileRes.DataBean) data).getUserId());
+
+        notificationReq.setUserIds(users);
+        notificationReq.setFileUrl("link");
+        notificationReq.setTitle(edtTitle.getText().toString());
+        notificationReq.setMessage(edtMessage.getText().toString());
+        notificationReq.setType("1");
+        notificationReq.setRecipientType(notificationReq.RECIPIENT_TYPE_TEACHER);
+
+        sendNotif(notificationReq);
 
     }
 /*

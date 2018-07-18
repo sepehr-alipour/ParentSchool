@@ -1,5 +1,6 @@
 package parent.school.salsal.com.view.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -20,6 +21,13 @@ import parent.school.salsal.com.adapter.AdapterTeachers;
 import parent.school.salsal.com.interfaces.OnDataSelectListener;
 import parent.school.salsal.com.model.SchoolListRes;
 import parent.school.salsal.com.model.TeacherProfileRes;
+import parent.school.salsal.com.model.TeachersProfileRes;
+import parent.school.salsal.com.util.PreferenceManager;
+import parent.school.salsal.com.view.activity.ActivityTeacherProfile;
+import parent.school.salsal.com.webservice.APIErrorResult;
+import parent.school.salsal.com.webservice.CallbackHandler;
+import parent.school.salsal.com.webservice.WebServiceHelper;
+import retrofit2.Response;
 
 public class FragmentProfileTeachers extends BaseFragment implements OnDataSelectListener {
 
@@ -38,16 +46,22 @@ public class FragmentProfileTeachers extends BaseFragment implements OnDataSelec
         View view = inflater.inflate(R.layout.fragment_teachers, container, false);
         unbinder = ButterKnife.bind(this, view);
 
-        ArrayList<TeacherProfileRes> listTeachers = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            TeacherProfileRes teacherItem = new TeacherProfileRes();
-            teacherItem.setName("معلم" + i);
-            teacherItem.setImageUrl("https://pickaface.net/gallery/avatar/unr_paii_180627_0934_vpwcm.png");
-            listTeachers.add(teacherItem);
-        }
-        AdapterTeachers adapterSchoolList = new AdapterTeachers(listTeachers, this);
-        list.setLayoutManager(new LinearLayoutManager(getContext()));
-        list.setAdapter(adapterSchoolList);
+
+        WebServiceHelper.get(getContext()).getTeachers(PreferenceManager.getCurrentStudentId(getContext()),
+                PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_TOKEN)).enqueue(new CallbackHandler<TeachersProfileRes>(getContext(), true, true) {
+            @Override
+            public void onSuccess(Response<TeachersProfileRes> response) {
+                AdapterTeachers adapterSchoolList = new AdapterTeachers(response.body().getData(), FragmentProfileTeachers.this);
+                list.setLayoutManager(new LinearLayoutManager(getContext()));
+                list.setAdapter(adapterSchoolList);
+            }
+
+            @Override
+            public void onFailed(APIErrorResult errorResult) {
+
+            }
+        });
+
         return view;
     }
 
@@ -60,6 +74,8 @@ public class FragmentProfileTeachers extends BaseFragment implements OnDataSelec
 
     @Override
     public void dataSelected(Object data) {
-
+        Intent intent = new Intent(getContext(), ActivityTeacherProfile.class);
+        intent.putExtra(ActivityTeacherProfile.EXTRA_TEACHER_ID, ((TeachersProfileRes.DataBean) data).getId());
+        startActivity(intent);
     }
 }

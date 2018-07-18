@@ -17,6 +17,11 @@ import butterknife.Unbinder;
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.adapter.AdapterSchedule;
 import parent.school.salsal.com.model.ScheduleRes;
+import parent.school.salsal.com.util.PreferenceManager;
+import parent.school.salsal.com.webservice.APIErrorResult;
+import parent.school.salsal.com.webservice.CallbackHandler;
+import parent.school.salsal.com.webservice.WebServiceHelper;
+import retrofit2.Response;
 
 public class FragmentScheduleWeekly extends BaseFragment {
     // TODO: Rename parameter arguments, choose names that match
@@ -59,23 +64,28 @@ public class FragmentScheduleWeekly extends BaseFragment {
 
         View view = inflater.inflate(R.layout.fragment_schedule_weekly, container, false);
         unbinder = ButterKnife.bind(this, view);
-        List<ScheduleRes.DataBean> schedules = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            ScheduleRes.DataBean schedule = new ScheduleRes.DataBean();
-            schedule.setDayOfWeek(i);
-            schedule.setPriority(i);
-            schedules.add(schedule);
-        }
-        AdapterSchedule adapterSchedule = new AdapterSchedule(schedules);
-        list.setLayoutManager(new LinearLayoutManager(getContext()));
-        list.setAdapter(adapterSchedule);
+        WebServiceHelper.get(getContext()).getStudentSchedule(PreferenceManager.getCurrentStudentId(getActivity()),
+                PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_TOKEN)).enqueue(new CallbackHandler<ScheduleRes>(getContext(), true, true) {
+            @Override
+            public void onSuccess(Response<ScheduleRes> response) {
+                AdapterSchedule adapterSchedule = new AdapterSchedule(response.body().getData());
+                list.setLayoutManager(new LinearLayoutManager(getContext()));
+                list.setAdapter(adapterSchedule);
+            }
+
+            @Override
+            public void onFailed(APIErrorResult errorResult) {
+
+            }
+        });
         return view;
     }
 
-    @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser) {
+
+
         }
     }
 

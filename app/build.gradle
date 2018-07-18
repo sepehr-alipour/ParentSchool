@@ -18,7 +18,7 @@ android {
         }
         debug {
 
-            resValue "string", "BASE_URL","http://192.168.1.7"// "192.168.2.119:80"
+            resValue "string", "BASE_URL","http://192.168.2.119"// "192.168.2.119:80"
             resValue "string", "SCHOOL_NAME", "test"
             resValue "string", "USER_NAME", "parent"
             resValue "string", "PASSWORD", "123"
@@ -33,7 +33,7 @@ dependencies {
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     implementation 'com.android.support:support-v4:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     implementation 'com.jakewharton:butterknife:8.8.1'
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'

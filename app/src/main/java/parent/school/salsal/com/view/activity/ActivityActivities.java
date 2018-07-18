@@ -16,6 +16,11 @@ import parent.school.salsal.com.R;
 import parent.school.salsal.com.adapter.AdapterActivities;
 import parent.school.salsal.com.interfaces.OnDataSelectListener;
 import parent.school.salsal.com.model.ActivityRes;
+import parent.school.salsal.com.util.PreferenceManager;
+import parent.school.salsal.com.webservice.APIErrorResult;
+import parent.school.salsal.com.webservice.CallbackHandler;
+import parent.school.salsal.com.webservice.WebServiceHelper;
+import retrofit2.Response;
 
 public class ActivityActivities extends BaseActivity implements OnDataSelectListener, View.OnClickListener {
     @BindView(R.id.toolbar)
@@ -33,19 +38,21 @@ public class ActivityActivities extends BaseActivity implements OnDataSelectList
         int courseId = getIntent().getIntExtra(INTENT_KEY_COURSE_ID, -1);
         int classId = getIntent().getIntExtra(INTENT_KEY_CLASS_ID, -1);
         toolbar.setTitle("لیست فعالیت های");
-        ArrayList<ActivityRes.DataBean> activities = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            ActivityRes.DataBean activityRes = new ActivityRes.DataBean();
-            activityRes.setTitle("فعالیت" + i);
-            activityRes.setDesc("توضیح" + i);
-            activityRes.setAtypeId(2);
-            activityRes.setExpireDate("1397/02/05");
-            activities.add(activityRes);
-        }
 
-        AdapterActivities adapterActivities = new AdapterActivities(activities, this);
-        list.setLayoutManager(new LinearLayoutManager(this));
-        list.setAdapter(adapterActivities);
+        WebServiceHelper.get(this).getActivities(PreferenceManager.getCurrentStudentId(this), PreferenceManager.getUserProfile(this).get(PreferenceManager.PREF_TOKEN)).enqueue(new CallbackHandler<ActivityRes>(this, true, true) {
+            @Override
+            public void onSuccess(Response<ActivityRes> response) {
+                AdapterActivities adapterActivities = new AdapterActivities(response.body().getData(), ActivityActivities.this);
+                list.setLayoutManager(new LinearLayoutManager(ActivityActivities.this));
+                list.setAdapter(adapterActivities);
+            }
+
+            @Override
+            public void onFailed(APIErrorResult errorResult) {
+
+            }
+        });
+
 
     }
 
