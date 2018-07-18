@@ -15,9 +15,10 @@
         <activity android:name=".view.activity.ActivityMain"></activity>
         <activity android:name=".view.activity.ActivityNotificationNew"></activity>
         <activity android:name=".view.activity.ActivityNotifDetail"></activity>
-        <activity android:name=".view.activity.ActivityNotifDetail"></activity>
         <activity android:name=".view.activity.ActivityEditProfile"></activity>
         <activity android:name=".view.activity.ActivityActivities"></activity>
+        <activity android:name=".view.activity.ActivityTeacherProfile"></activity>
+        <activity android:name=".view.activity.ActivityResponseActivity"></activity>
         <activity android:name=".view.activity.ActivityChildren">
 
 

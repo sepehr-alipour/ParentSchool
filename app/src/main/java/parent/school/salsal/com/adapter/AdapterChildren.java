@@ -14,15 +14,16 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.model.StudentRes;
 
-public class AdapterChildren extends ArrayAdapter<StudentRes> {
+public class AdapterChildren extends ArrayAdapter<StudentRes.DataBean> {
     private Context ctx;
-    private ArrayList<StudentRes> contentArray;
+    private List<StudentRes.DataBean> contentArray;
 
-    public AdapterChildren(Context context, ArrayList<StudentRes> objects) {
+    public AdapterChildren(Context context, List<StudentRes.DataBean> objects) {
         super(context, R.layout.list_item_school, R.id.txtTitle, objects);
         this.ctx = context;
         this.contentArray = objects;
@@ -51,7 +52,7 @@ public class AdapterChildren extends ArrayAdapter<StudentRes> {
         requestOptions.placeholder(R.drawable.ic_action_profile);
         Glide.with(ctx)
                 .setDefaultRequestOptions(requestOptions)
-                .load(contentArray.get(position).getAvatar())
+                .load(contentArray.get(position).getImageUrl())
                 .into(imageView);
 
         return row;

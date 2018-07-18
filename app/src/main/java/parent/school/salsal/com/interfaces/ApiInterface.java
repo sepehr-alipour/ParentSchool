@@ -22,6 +22,7 @@ import parent.school.salsal.com.model.StudentProfileReq;
 import parent.school.salsal.com.model.StudentProfileRes;
 import parent.school.salsal.com.model.StudentRes;
 import parent.school.salsal.com.model.TeacherProfileRes;
+import parent.school.salsal.com.model.TeachersProfileRes;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -42,23 +43,23 @@ public interface ApiInterface {
     @POST(URL_V1 + "/user/signin")
     Call<LoginRes> loginUser(@Body LoginReq req);
 
-    @GET(URL_V1 + "/perent/{id}")
+    @GET(URL_V1 + "/parent/{id}")
     Call<ParentProfileRes> getParentProfile(@Path("id") String id, @Query("token") String token);
 
     @POST(URL_V1 + "/parent/{id}")
     Call<JsonObject> updateParentProfile(@Query("user_id") String userId, @Query("token") String token, @Body StudentLessonsRes teacherProfileReq);
 
-    @GET(URL_V1 + "parent/students")
-    Call<List<StudentRes>> getParentStudents(@Query("token") String token);
+    @GET(URL_V1 + "/parent/students")
+    Call<StudentRes> getParentStudents(@Query("token") String token);
 
     @POST(URL_V1 + "/studentProfile/{id}")
-    Call<JsonObject> updateProfile(@Path("id") String id, @Query("token") String token, @Body StudentProfileReq studentProfileReq);
+    Call<JsonObject> updateStudentProfile(@Path("id") String id, @Query("token") String token, @Body StudentProfileReq studentProfileReq);
 
     @GET(URL_V1 + "/studentProfile/{id}")
     Call<StudentProfileRes> getStudentProfile(@Path("id") String id, @Query("token") String token);
 
     @GET(URL_V1 + "/studentProfile/{id}/teachers")
-    Call<List<TeacherProfileRes>> getTeachers(@Path("id") String id, @Query("token") String token);
+    Call<TeachersProfileRes> getTeachers(@Path("id") String id, @Query("token") String token);
 
     @GET(URL_V1 + "/studentProfile/{id}/courses")
     Call<CourseRes> getCourses(@Path("id") String id, @Query("token") String token);
@@ -66,14 +67,14 @@ public interface ApiInterface {
     @GET(URL_V1 + "/studentProfile/{id}/activities")
     Call<ActivityRes> getActivities(@Path("id") String id, @Query("token") String token);
 
-    @POST(URL_V1 + "/studentProfile/{id}/attendance")
-    Call<AttendanceRes> attendanceStudent(@Query("token") String token, @Body AttendanceReq attendanceReq);
+    @GET(URL_V1 + "/activity/{id}/details")
+    Call<ActivityRes> getActivityDetails(@Path("id") String id, @Query("token") String token);
 
-    @GET(URL_V1 + "/studentProfile/classes")
-    Call<StudentRes> getStudentsClass(@Query("token") String token, @Query("class_id") int classid);
+    @GET(URL_V1 + "/studentProfile/{id}/attendance")
+    Call<AttendanceRes> getAttendance(@Path("id") String id, @Query("token") String token);
 
     @GET(URL_V1 + "/teacherProfile/{id}")
-    Call<TeacherProfileRes> getTeacherProfile(@Path("id") String id, @Query("token") String token);
+    Call<TeacherProfileRes> getTeacherProfile(@Path("id") int id, @Query("token") String token);
 
     @GET(URL_V1 + "/schools/name")
     Call<List<SchoolListRes>> getSchools(@Query("query") String query);
@@ -84,8 +85,8 @@ public interface ApiInterface {
     @GET(URL_V1 + "/notification/sentBox")
     Call<NotificationRes> getSentBoxNotifications(@Query("token") String token);
 
-    @GET(URL_V1 + "/schedule")
-    Call<ScheduleRes> getStudentSchedule(@Query("token") String token);
+    @GET(URL_V1 + "/schedule/students/{id}")
+    Call<ScheduleRes> getStudentSchedule(@Path("id") String id, @Query("token") String token);
 
     @GET(URL_V1 + "/notification/{id}")
     Call<NotificationDetailRes> getNotificationDetails(@Path("id") int notification, @Query("token") String token);
