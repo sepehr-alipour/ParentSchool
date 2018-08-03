@@ -59,16 +59,18 @@ public class FragmentProfileStudent extends BaseFragment {
         WebServiceHelper.get(getContext()).getStudentProfile(PreferenceManager.getCurrentStudentId(getContext()), PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_TOKEN)).enqueue(new CallbackHandler<StudentProfileRes>(getContext(), true, true) {
             @Override
             public void onSuccess(Response<StudentProfileRes> response) {
-                txtStdId.setText(response.body().getData().getId() + "");
-                txtName.setText(response.body().getData().getName());
-                txtBirthday.setText(response.body().getData().getBirthDate() + "");
-                txtNationalCode.setText(response.body().getData().getNationalCode() + "");
-                RequestOptions requestOptions = new RequestOptions();
-                requestOptions.placeholder(R.drawable.ic_action_profile);
-                Glide.with(getContext())
-                        .setDefaultRequestOptions(requestOptions)
-                        .load(response.body().getData().getImageUrl())
-                        .into(profileImage);
+                if (isAdded()) {
+                    txtStdId.setText(response.body().getData().getId() + "");
+                    txtName.setText(response.body().getData().getName());
+                    txtBirthday.setText(response.body().getData().getBirthDate() + "");
+                    txtNationalCode.setText(response.body().getData().getNationalCode() + "");
+                    RequestOptions requestOptions = new RequestOptions();
+                    requestOptions.placeholder(R.drawable.ic_action_profile);
+                    Glide.with(getContext())
+                            .setDefaultRequestOptions(requestOptions)
+                            .load(response.body().getData().getImageUrl())
+                            .into(profileImage);
+                }
             }
 
             @Override

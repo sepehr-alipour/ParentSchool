@@ -58,18 +58,20 @@ public class FragmentProfileParent extends BaseFragment {
                 , PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_TOKEN)).enqueue(new CallbackHandler<ParentProfileRes>(getContext(), true, true) {
             @Override
             public void onSuccess(Response<ParentProfileRes> response) {
-                txtName.setText(response.body().getData().getName());
-                txtBirthday.setText(response.body().getData().getBirthDate());
-                txtEducation.setText(response.body().getData().getEducation());
-                txtMobile.setText(response.body().getData().getPhoneNumber());
-                txtEmail.setText(response.body().getData().getEmail());
-                txtNationalCode.setText(response.body().getData().getNationalCode());
-                RequestOptions requestOptions = new RequestOptions();
-                requestOptions.placeholder(R.drawable.ic_action_profile);
-                Glide.with(getContext())
-                        .setDefaultRequestOptions(requestOptions)
-                        .load(response.body().getData().getImageUrl())
-                        .into(profileImage);
+                if (isAdded()) {
+                    txtName.setText(response.body().getData().getName());
+                    txtBirthday.setText(response.body().getData().getBirthDate());
+                    txtEducation.setText(response.body().getData().getEducation());
+                    txtMobile.setText(response.body().getData().getPhoneNumber());
+                    txtEmail.setText(response.body().getData().getEmail());
+                    txtNationalCode.setText(response.body().getData().getNationalCode());
+                    RequestOptions requestOptions = new RequestOptions();
+                    requestOptions.placeholder(R.drawable.ic_action_profile);
+                    Glide.with(getContext())
+                            .setDefaultRequestOptions(requestOptions)
+                            .load(response.body().getData().getImageUrl())
+                            .into(profileImage);
+                }
 
             }
 
