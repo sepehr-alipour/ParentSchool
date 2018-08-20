@@ -7,7 +7,12 @@ import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatEditText;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ScrollView;
+
+import com.google.gson.JsonObject;
+
+import junit.runner.BaseTestRunner;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -15,6 +20,15 @@ import ir.hamsaa.persiandatepicker.Listener;
 import ir.hamsaa.persiandatepicker.PersianDatePickerDialog;
 import ir.hamsaa.persiandatepicker.util.PersianCalendar;
 import parent.school.salsal.com.R;
+import parent.school.salsal.com.model.ParentProfileReq;
+import parent.school.salsal.com.model.ParentProfileRes;
+import parent.school.salsal.com.model.StudentProfileReq;
+import parent.school.salsal.com.model.StudentProfileRes;
+import parent.school.salsal.com.util.PreferenceManager;
+import parent.school.salsal.com.webservice.APIErrorResult;
+import parent.school.salsal.com.webservice.CallbackHandler;
+import parent.school.salsal.com.webservice.WebServiceHelper;
+import retrofit2.Response;
 
 public class ActivityEditProfile extends BaseActivity implements View.OnClickListener, Listener {
     @BindView(R.id.toolbar)
@@ -31,6 +45,21 @@ public class ActivityEditProfile extends BaseActivity implements View.OnClickLis
     AppCompatButton btnSend;
     @BindView(R.id.list)
     ScrollView list;
+    @BindView(R.id.edtNationalCode)
+    AppCompatEditText edtNationalCode;
+    @BindView(R.id.layoutEducation)
+    LinearLayout layoutEducation;
+    @BindView(R.id.layoutEmail)
+    LinearLayout layoutEmail;
+    @BindView(R.id.layoutPhone)
+    LinearLayout layoutPhone;
+
+    public static final String PARAMS_NAME_STUDENT = "view_type";
+    public static final int TYPE_STUDENT = 0;
+    public static final int TYPE_PARENT = 1;
+    private int viewType;
+    private String userId;
+    private String token;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,16 +69,99 @@ public class ActivityEditProfile extends BaseActivity implements View.OnClickLis
         toolbar.setTitle("ویرایش مشخصات");
         btnSend.setOnClickListener(this);
         edtBirthday.setOnClickListener(this);
+        viewType = getIntent().getIntExtra(PARAMS_NAME_STUDENT, -1);
+        initViews();
 
+    }
+
+    private void initViews() {
+        token = PreferenceManager.getUserProfile(this).get(PreferenceManager.PREF_TOKEN);
+        switch (viewType) {
+            case TYPE_STUDENT:
+                layoutEducation.setVisibility(View.GONE);
+                layoutEmail.setVisibility(View.GONE);
+                layoutPhone.setVisibility(View.GONE);
+                userId = PreferenceManager.getCurrentStudentId(this);
+                WebServiceHelper.get(this).getStudentProfile(userId, token)
+                        .enqueue(new CallbackHandler<StudentProfileRes>(this, true, true) {
+                            @Override
+                            public void onSuccess(Response<StudentProfileRes> response) {
+                                edtBirthday.setText(response.body().getData().getBirthDate());
+                                edtNationalCode.setText(response.body().getData().getNationalCode());
+                            }
+
+                            @Override
+                            public void onFailed(APIErrorResult errorResult) {
+
+                            }
+                        });
+                break;
+            case TYPE_PARENT:
+                userId = PreferenceManager.getUserProfile(this).get(PreferenceManager.PREF_PARENT_ID);
+                WebServiceHelper.get(this).getParentProfile(userId, token)
+                        .enqueue(new CallbackHandler<ParentProfileRes>(this, true, true) {
+                            @Override
+                            public void onSuccess(Response<ParentProfileRes> response) {
+                                edtEducation.setText(response.body().getData().getEducation());
+                                edtEmail.setText(response.body().getData().getEmail());
+                                edtNationalCode.setText(response.body().getData().getNationalCode());
+                                edtPhone.setText(response.body().getData().getPhoneNumber());
+                                edtBirthday.setText(response.body().getData().getBirthDate());
+
+                            }
+
+                            @Override
+                            public void onFailed(APIErrorResult errorResult) {
+
+                            }
+                        });
+                break;
+        }
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btnSend:
+                switch (viewType) {
+                    case TYPE_PARENT:
+                        //todo set data to update
+                        ParentProfileReq parentProfileReq = new ParentProfileReq();
+                        WebServiceHelper.get(this).updateParentProfile(userId, token, parentProfileReq)
+                                .enqueue(new CallbackHandler<JsonObject>(this, true, true) {
+                                    @Override
+                                    public void onSuccess(Response<JsonObject> response) {
 
+                                    }
+
+                                    @Override
+                                    public void onFailed(APIErrorResult errorResult) {
+
+                                    }
+                                });
+                        break;
+                    case TYPE_STUDENT:
+                        //todo 405 error
+                        StudentProfileReq studentProfileReq = new StudentProfileReq();
+                        studentProfileReq.setBirthDate(edtBirthday.getText().toString());
+                        studentProfileReq.setNationalCode(edtNationalCode.getText().toString());
+                        WebServiceHelper.get(this).updateStudentProfile(userId, token, studentProfileReq)
+                                .enqueue(new CallbackHandler<JsonObject>(this, true, true) {
+                                    @Override
+                                    public void onSuccess(Response<JsonObject> response) {
+                                        finish();
+                                    }
+
+                                    @Override
+                                    public void onFailed(APIErrorResult errorResult) {
+
+                                    }
+                                });
+                        break;
+                }
                 break;
-            case R.id.edtBirthday: new PersianDatePickerDialog(this)
+            case R.id.edtBirthday:
+                new PersianDatePickerDialog(this)
                         .setPositiveButtonString("تایید")
                         .setNegativeButton("انصراف")
                         .setActionTextColor(getResources().getColor(R.color.colorAccent))
@@ -62,7 +174,7 @@ public class ActivityEditProfile extends BaseActivity implements View.OnClickLis
         }
     }
 
-   @Override
+    @Override
     public void onDateSelected(PersianCalendar persianCalendar) {
         edtBirthday.setText(persianCalendar.getPersianShortDate());
     }

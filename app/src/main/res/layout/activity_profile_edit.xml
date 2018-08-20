@@ -30,32 +30,38 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <TextView
+                    <LinearLayout
+                        android:id="@+id/layoutEducation"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawablePadding="10dp"
-                        android:drawableRight="@drawable/ic_action_education"
-                        android:gravity="center_vertical"
-                        android:text="میزان تحصیلات"
-                        android:textSize="18sp" />
+                        android:orientation="vertical">
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/gray_divider" />
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="10dp"
+                            android:drawableRight="@drawable/ic_action_education"
+                            android:gravity="center_vertical"
+                            android:text="میزان تحصیلات"
+                            android:textSize="18sp" />
 
-                    <android.support.v7.widget.AppCompatEditText
-                        android:id="@+id/edtEducation"
-                        style="@style/EditTextStyle"
-                        android:layout_width="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="30dp"
-                        android:layout_marginTop="@dimen/space_10_dp"
-                        android:gravity="right|center"
-                        android:inputType="text"
-                        android:paddingTop="50dp" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/gray_divider" />
 
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/edtEducation"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="30dp"
+                            android:layout_marginTop="@dimen/space_10_dp"
+                            android:gravity="right|center"
+                            android:inputType="text"
+                            android:paddingTop="50dp" />
+                    </LinearLayout>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -86,15 +92,82 @@
                         android:inputType="text"
                         android:paddingTop="50dp" />
 
+                    <LinearLayout
+                        android:id="@+id/layoutEmail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25dp"
+                            android:drawablePadding="10dp"
+                            android:drawableRight="@drawable/ic_action_mail"
+                            android:gravity="center_vertical"
+                            android:text="آدرس ایمیل"
+                            android:textSize="18sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/gray_divider" />
+
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/edtEmail"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="30dp"
+                            android:layout_marginTop="@dimen/space_10_dp"
+                            android:gravity="right|center"
+                            android:inputType="text"
+                            android:paddingTop="50dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layoutPhone"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25dp"
+                            android:drawablePadding="10dp"
+                            android:drawableRight="@drawable/ic_action_phone"
+                            android:gravity="center_vertical"
+                            android:text="شماره تماس"
+                            android:textSize="18sp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/gray_divider" />
+
+                        <android.support.v7.widget.AppCompatEditText
+                            android:id="@+id/edtPhone"
+                            style="@style/EditTextStyle"
+                            android:layout_width="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_marginBottom="30dp"
+                            android:layout_marginTop="@dimen/space_10_dp"
+                            android:gravity="right|center"
+                            android:inputType="text"
+                            android:paddingTop="50dp" />
+                    </LinearLayout>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"
                         android:drawablePadding="10dp"
-                        android:drawableRight="@drawable/ic_action_mail"
+                        android:drawableRight="@drawable/ic_action_code"
                         android:gravity="center_vertical"
-                        android:text="آدرس ایمیل"
+                        android:text="کد ملی"
                         android:textSize="18sp" />
 
                     <View
@@ -104,41 +177,14 @@
                         android:background="@color/gray_divider" />
 
                     <android.support.v7.widget.AppCompatEditText
-                        android:id="@+id/edtEmail"
+                        android:id="@+id/edtNationalCode"
                         style="@style/EditTextStyle"
                         android:layout_width="match_parent"
                         android:layout_gravity="center"
                         android:layout_marginBottom="30dp"
                         android:layout_marginTop="@dimen/space_10_dp"
                         android:gravity="right|center"
-                        android:inputType="text"
-                        android:paddingTop="50dp" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:drawablePadding="10dp"
-                        android:drawableRight="@drawable/ic_action_phone"
-                        android:gravity="center_vertical"
-                        android:text="شماره تماس"
-                        android:textSize="18sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/gray_divider" />
-
-                    <android.support.v7.widget.AppCompatEditText
-                        android:id="@+id/edtPhone"
-                        style="@style/EditTextStyle"
-                        android:layout_width="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="30dp"
-                        android:layout_marginTop="@dimen/space_10_dp"
-                        android:gravity="right|center"
-                        android:inputType="text"
+                        android:inputType="number"
                         android:paddingTop="50dp" />
 
 

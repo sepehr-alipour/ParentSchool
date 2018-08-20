@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.concurrent.CopyOnWriteArraySet;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -66,10 +68,18 @@ public class FragmentProfile extends Fragment implements View.OnClickListener {
 
             @Override
             public void onPageSelected(int position) {
-                if (position == AdapterPagerProfile.POSITION_SCHOOL) {
-                    fabEdit.setImageResource(R.drawable.ic_action_add);
-
-                } else fabEdit.setImageResource(R.drawable.ic_action_edit);
+                switch (position) {
+                    case AdapterPagerProfile.POSITION_SCHOOL:
+                        fabEdit.setImageResource(R.drawable.ic_action_add);
+                        fabEdit.show();
+                        break;
+                    case AdapterPagerProfile.POSITION_TEACHERS:
+                        fabEdit.hide();
+                        break;
+                    default:
+                        fabEdit.setImageResource(R.drawable.ic_action_edit);
+                        fabEdit.show();
+                }
             }
 
             @Override
@@ -88,18 +98,29 @@ public class FragmentProfile extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
+        Intent intent = null;
+        if (v.getId() == R.id.fabEdit) {
+            switch (viewPager.getCurrentItem()) {
+                case AdapterPagerProfile.POSITION_PARENT:
 
-        switch (viewPager.getCurrentItem()) {
-            case AdapterPagerProfile.POSITION_PARENT:
+                    intent = new Intent(getContext(), ActivityEditProfile.class);
+                    intent.putExtra(ActivityEditProfile.PARAMS_NAME_STUDENT, ActivityEditProfile.TYPE_PARENT);
+                    startActivity(intent);
+                    break;
+                case AdapterPagerProfile.POSITION_STUDENT:
 
-            case AdapterPagerProfile.POSITION_STUDENT:
+                    intent = new Intent(getContext(), ActivityEditProfile.class);
+                    intent.putExtra(ActivityEditProfile.PARAMS_NAME_STUDENT, ActivityEditProfile.TYPE_STUDENT);
+                    startActivity(intent);
+                    break;
 
-                startActivity(new Intent(getContext(), ActivityEditProfile.class));
-                break;
-            default:
-                startActivity(new Intent(getContext(), ActivitySchools.class));
+                case AdapterPagerProfile.POSITION_SCHOOL:
+                    intent = new Intent(getContext(), ActivitySchools.class);
+                    startActivity(intent);
+                    break;
 
 
+            }
         }
     }
 }

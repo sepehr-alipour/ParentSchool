@@ -51,15 +51,15 @@ public class StudentProfileRes {
         @SerializedName("name")
         private String name;
         @SerializedName("birth_date")
-        private Object birthDate;
+        private String birthDate;
         @SerializedName("image_url")
-        private Object imageUrl;
+        private String imageUrl;
         @SerializedName("email")
-        private Object email;
+        private String email;
         @SerializedName("phone_number")
-        private Object phoneNumber;
+        private String phoneNumber;
         @SerializedName("national_code")
-        private Object nationalCode;
+        private String nationalCode;
         @SerializedName("user_id")
         private int userId;
         @SerializedName("parent_id")
@@ -85,11 +85,11 @@ public class StudentProfileRes {
             this.name = name;
         }
 
-        public Object getBirthDate() {
+        public String getBirthDate() {
             return birthDate;
         }
 
-        public void setBirthDate(Object birthDate) {
+        public void setBirthDate(String birthDate) {
             this.birthDate = birthDate;
         }
 
@@ -97,7 +97,7 @@ public class StudentProfileRes {
             return imageUrl;
         }
 
-        public void setImageUrl(Object imageUrl) {
+        public void setImageUrl(String imageUrl) {
             this.imageUrl = imageUrl;
         }
 
@@ -105,7 +105,7 @@ public class StudentProfileRes {
             return email;
         }
 
-        public void setEmail(Object email) {
+        public void setEmail(String email) {
             this.email = email;
         }
 
@@ -113,15 +113,15 @@ public class StudentProfileRes {
             return phoneNumber;
         }
 
-        public void setPhoneNumber(Object phoneNumber) {
+        public void setPhoneNumber(String phoneNumber) {
             this.phoneNumber = phoneNumber;
         }
 
-        public Object getNationalCode() {
+        public String getNationalCode() {
             return nationalCode;
         }
 
-        public void setNationalCode(Object nationalCode) {
+        public void setNationalCode(String nationalCode) {
             this.nationalCode = nationalCode;
         }
 

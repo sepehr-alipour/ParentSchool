@@ -12,6 +12,7 @@ import parent.school.salsal.com.model.LoginReq;
 import parent.school.salsal.com.model.LoginRes;
 import parent.school.salsal.com.model.NotificationDetailRes;
 import parent.school.salsal.com.model.NotificationRes;
+import parent.school.salsal.com.model.ParentProfileReq;
 import parent.school.salsal.com.model.ParentProfileRes;
 import parent.school.salsal.com.model.ScheduleRes;
 import parent.school.salsal.com.model.SchoolListRes;
@@ -47,7 +48,7 @@ public interface ApiInterface {
     Call<ParentProfileRes> getParentProfile(@Path("id") String id, @Query("token") String token);
 
     @POST(URL_V1 + "/parent/{id}")
-    Call<JsonObject> updateParentProfile(@Query("user_id") String userId, @Query("token") String token, @Body StudentLessonsRes teacherProfileReq);
+    Call<JsonObject> updateParentProfile(@Query("user_id") String userId, @Query("token") String token, @Body ParentProfileReq perentProfileReq);
 
     @GET(URL_V1 + "/parent/students")
     Call<StudentRes> getParentStudents(@Query("token") String token);
