@@ -145,8 +145,8 @@ public class PreferenceManager {
     public static HashMap<String, String> getUserProfile(Context context) {
         HashMap<String, String> profile = new HashMap<>();
         SharedPreferences prefs = context.getSharedPreferences(PRE_USER_PROFILE, MODE_PRIVATE);
-        profile.put(PREF_PARENT_ID, prefs.getString(PREF_PARENT_ID, ""));
-        profile.put(PREF_TOKEN, prefs.getString(PREF_TOKEN, ""));
+        profile.put(PREF_PARENT_ID, prefs.getString(PREF_PARENT_ID, null));
+        profile.put(PREF_TOKEN, prefs.getString(PREF_TOKEN, null));
         return profile;
     }
 
