@@ -23,6 +23,8 @@
     <string name="priority">زنگ %1$d</string>
     <string name="toast_error_school">لطفا مدرسه خود را انتخاب کنید</string>
     <string name="toast_warning_duplicate_school">این مدرسه قبلا ثبت شده است</string>
+    <string name="toast_exit">لطفا برای خروج دوباره تلاش کنید</string>
+    <string name="text_choose_school">انتخاب مدرسه از لیست:</string>
     <string-array name="schools">
         <item>مدرسه البرز</item>
         <item>مدرسه آبان</item>

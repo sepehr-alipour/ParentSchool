@@ -6,18 +6,20 @@ import android.support.v7.widget.AppCompatAutoCompleteTextView;
 import android.support.v7.widget.AppCompatButton;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-import org.xml.sax.helpers.LocatorImpl;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.adapter.AdapterSpinnerSchool;
 import parent.school.salsal.com.model.LoginReq;
@@ -35,6 +37,8 @@ public class ActivitySchools extends BaseActivity {
     AppCompatAutoCompleteTextView edtAutoSchools;
     @BindView(R.id.btnLogin)
     AppCompatButton btnLogin;
+    @BindView(R.id.img_logo)
+    CircleImageView imgLogo;
     private SchoolListRes selectedSchool;
 
     @Override
@@ -42,13 +46,18 @@ public class ActivitySchools extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_schools);
         ButterKnife.bind(this);
-
+        final RequestOptions requestOptions = new RequestOptions();
+        requestOptions.placeholder(R.drawable.logo);
         final ArrayList<SchoolListRes> list = new ArrayList<>();
         final AdapterSpinnerSchool adapter = new AdapterSpinnerSchool(this, list);
         edtAutoSchools.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedSchool = (SchoolListRes) parent.getItemAtPosition(position);
+                Glide.with(ActivitySchools.this)
+                        .setDefaultRequestOptions(requestOptions)
+                        .load(selectedSchool.getLogo())
+                        .into(imgLogo);
                 Toast.makeText(ActivitySchools.this, selectedSchool.getName(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -106,6 +115,7 @@ public class ActivitySchools extends BaseActivity {
                     //todo
                     if (PreferenceManager.addSchoolConnection(loginReq)) {
                         startActivity(new Intent(ActivitySchools.this, ActivityLogin.class));
+                        return;
                     }
                     Toast.makeText(ActivitySchools.this, R.string.toast_warning_duplicate_school, Toast.LENGTH_SHORT).show();
                 } else

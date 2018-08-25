@@ -3,16 +3,15 @@ package parent.school.salsal.com.view.activity;
 import android.os.Bundle;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.AppCompatRatingBar;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import de.hdodenhof.circleimageview.CircleImageView;
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.model.TeacherProfileRes;
 import parent.school.salsal.com.util.PreferenceManager;
@@ -44,6 +43,10 @@ public class ActivityTeacherProfile extends BaseActivity {
     NestedScrollView list;
 
     public static final String EXTRA_TEACHER_ID = "teacher_id";
+    @BindView(R.id.profile_image)
+    CircleImageView profileImage;
+    @BindView(R.id.txt_name)
+    TextView txtName;
 
     public ActivityTeacherProfile() {
         // Required empty public constructor
@@ -64,6 +67,13 @@ public class ActivityTeacherProfile extends BaseActivity {
                 txtMobile.setText(response.body().getData().getPhoneNumber());
                 txtNationalCode.setText(response.body().getData().getNationalCode());
                 ratingBar.setRating(response.body().getData().getRate());
+                txtName.setText(response.body().getData().getName());
+                RequestOptions requestOptions = new RequestOptions();
+                requestOptions.placeholder(R.drawable.ic_action_profile);
+                Glide.with(ActivityTeacherProfile.this)
+                        .setDefaultRequestOptions(requestOptions)
+                        .load(response.body().getData().getImageUrl())
+                        .into(profileImage);
             }
 
             @Override

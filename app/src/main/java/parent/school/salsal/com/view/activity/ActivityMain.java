@@ -1,11 +1,13 @@
 package parent.school.salsal.com.view.activity;
 
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
@@ -50,8 +52,8 @@ public class ActivityMain extends BaseActivity implements View.OnClickListener,
         bottomNavigation.addItem(item3);
         bottomNavigation.addItem(item4);
         bottomNavigation.setOnTabSelectedListener(this);
-        bottomNavigation.setCurrentItem(TAB_NOTIFICATIONS);
         bottomNavigation.setTitleState(AHBottomNavigation.TitleState.ALWAYS_SHOW);
+        bottomNavigation.setCurrentItem(TAB_NOTIFICATIONS);
     }
 
     @Override
@@ -88,5 +90,26 @@ public class ActivityMain extends BaseActivity implements View.OnClickListener,
         transaction.replace(R.id.homeContainer, selectedFragment);
         transaction.commit();
         return true;
+    }
+
+    boolean doubleBackToExitPressedOnce = false;
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, R.string.toast_exit, Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce = false;
+            }
+        }, 2000);
     }
 }

@@ -8,19 +8,15 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.telecom.CallAudioState;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
-import java.util.concurrent.CopyOnWriteArraySet;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.adapter.AdapterPagerProfile;
-import parent.school.salsal.com.view.activity.ActivityChildren;
 import parent.school.salsal.com.view.activity.ActivityEditProfile;
 import parent.school.salsal.com.view.activity.ActivitySchools;
 
@@ -58,6 +54,7 @@ public class FragmentProfile extends Fragment implements View.OnClickListener {
 
         unbinder = ButterKnife.bind(this, view);
         viewPager.setAdapter(pagerAdapter);
+        viewPager.setOffscreenPageLimit(1);
         tabLayout.setupWithViewPager(viewPager);
         fabEdit.setOnClickListener(this);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
