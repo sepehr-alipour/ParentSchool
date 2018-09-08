@@ -24,6 +24,7 @@ public class PreferenceManager {
     private static final String PRE_USER_PROFILE = "user_profile_parent";
     public static final String PREF_TOKEN = "token";
     public static final String PREF_SCHOOL_CONNECTION = "connections";
+    public static final String PREF_USER_ID = "user_id";
     public static final String PREF_PARENT_ID = "parent_id";
     public static final String PREF_STUDENT_ID = "student_id";
     public static final String PREF_COURSE_ID = "course_id";
@@ -112,10 +113,11 @@ public class PreferenceManager {
         return Hawk.get(PREF_SCHOOL_CONNECTION, new ArrayList<LoginReq>());
     }
 
-    public static void SaveUserProfile(Context context, String id, String token) {
+    public static void SaveUserProfile(Context context, String id,String parentId, String token) {
         SharedPreferences.Editor editor = context.getSharedPreferences(PRE_USER_PROFILE, MODE_PRIVATE).edit();
         editor.putString(PREF_TOKEN, token);
-        editor.putString(PREF_PARENT_ID, id);
+        editor.putString(PREF_USER_ID, id);
+        editor.putString(PREF_PARENT_ID, parentId);
         editor.apply();
     }
 
@@ -145,6 +147,7 @@ public class PreferenceManager {
     public static HashMap<String, String> getUserProfile(Context context) {
         HashMap<String, String> profile = new HashMap<>();
         SharedPreferences prefs = context.getSharedPreferences(PRE_USER_PROFILE, MODE_PRIVATE);
+        profile.put(PREF_USER_ID, prefs.getString(PREF_USER_ID, null));
         profile.put(PREF_PARENT_ID, prefs.getString(PREF_PARENT_ID, null));
         profile.put(PREF_TOKEN, prefs.getString(PREF_TOKEN, null));
         return profile;

@@ -12,31 +12,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.ActivityMain"></activity>
-        <activity android:name=".view.activity.ActivityNotificationNew"></activity>
-        <activity android:name=".view.activity.ActivityNotifDetail"></activity>
-        <activity android:name=".view.activity.ActivityEditProfile"></activity>
-        <activity android:name=".view.activity.ActivityActivities"></activity>
-        <activity android:name=".view.activity.ActivityTeacherProfile"></activity>
-        <activity android:name=".view.activity.ActivityResponseActivity"></activity>
-        <activity android:name=".view.activity.ActivityChildren"></activity>
-        <activity android:name=".view.activity.ActivityLogin"></activity>
+        <activity android:name=".view.activity.ActivityMain" />
+        <activity android:name=".view.activity.ActivityNotificationNew" />
+        <activity android:name=".view.activity.ActivityNotifDetail" />
+        <activity android:name=".view.activity.ActivityEditProfile" />
+        <activity android:name=".view.activity.ActivityActivities" />
+        <activity android:name=".view.activity.ActivityTeacherProfile" />
+        <activity android:name=".view.activity.ActivityResponseActivity" />
+        <activity android:name=".view.activity.ActivityChildren" />
+        <activity android:name=".view.activity.ActivityLogin" />
+        <activity android:name=".view.activity.ActivityDetails" />
         <activity android:name=".view.activity.ActivitySplash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".view.activity.ActivityLoading"
             android:theme="@style/Theme.AppCompat.Translucent" />
         <activity
             android:name=".view.activity.ActivitySchools"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
+            android:windowSoftInputMode="adjustResize"></activity>
     </application>
 
 </manifest>

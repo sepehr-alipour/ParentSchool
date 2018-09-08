@@ -1,5 +1,6 @@
 package parent.school.salsal.com.view.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -37,7 +38,7 @@ public class ActivityActivities extends BaseActivity implements OnDataSelectList
         ButterKnife.bind(this);
         int courseId = getIntent().getIntExtra(INTENT_KEY_COURSE_ID, -1);
         int classId = getIntent().getIntExtra(INTENT_KEY_CLASS_ID, -1);
-        toolbar.setTitle("لیست فعالیت های");
+        toolbar.setTitle(R.string.title_activities);
 
         WebServiceHelper.get(this).getActivities(PreferenceManager.getCurrentStudentId(this), PreferenceManager.getUserProfile(this).get(PreferenceManager.PREF_TOKEN)).enqueue(new CallbackHandler<ActivityRes>(this, true, true) {
             @Override
@@ -58,7 +59,7 @@ public class ActivityActivities extends BaseActivity implements OnDataSelectList
 
     @Override
     public void dataSelected(Object data) {
-
+        startActivity(new Intent(this, ActivityDetails.class));
     }
 
     @Override

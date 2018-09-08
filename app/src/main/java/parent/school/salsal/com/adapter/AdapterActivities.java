@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import junit.runner.BaseTestRunner;
+
 import java.util.List;
 
 import butterknife.BindView;
@@ -41,7 +43,18 @@ public class AdapterActivities extends RecyclerView.Adapter<AdapterActivities.Vi
         holder.txtDesc.setText(itemList.getDesc());
         holder.txtExpireDate.setText(itemList.getExpireDate() + "");
         holder.txtTitle.setText(itemList.getTitle());
-        holder.txtType.setText(itemList.getAtypeId() + "");
+        String[] activityType = holder.txtDate.getContext().getResources().getStringArray(R.array.activity_type);
+        switch (itemList.getAtypeId()) {
+            case 1:
+
+                holder.txtType.setText(activityType[0]);
+                holder.txtType.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_action_student, 0);
+                break;
+            case 2:
+                holder.txtType.setText(activityType[1]);
+                holder.txtType.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_action_parent, 0);
+                break;
+        }
     }
 
     @Override

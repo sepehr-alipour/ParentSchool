@@ -4,8 +4,8 @@ import com.google.gson.JsonObject;
 
 import java.util.List;
 
+import parent.school.salsal.com.model.ActivityAnswerReq;
 import parent.school.salsal.com.model.ActivityRes;
-import parent.school.salsal.com.model.AttendanceReq;
 import parent.school.salsal.com.model.AttendanceRes;
 import parent.school.salsal.com.model.CourseRes;
 import parent.school.salsal.com.model.LoginReq;
@@ -17,8 +17,6 @@ import parent.school.salsal.com.model.ParentProfileRes;
 import parent.school.salsal.com.model.ScheduleRes;
 import parent.school.salsal.com.model.SchoolListRes;
 import parent.school.salsal.com.model.SendNotificationReq;
-import parent.school.salsal.com.model.StudentActivityRes;
-import parent.school.salsal.com.model.StudentLessonsRes;
 import parent.school.salsal.com.model.StudentProfileReq;
 import parent.school.salsal.com.model.StudentProfileRes;
 import parent.school.salsal.com.model.StudentRes;
@@ -28,6 +26,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -47,13 +46,13 @@ public interface ApiInterface {
     @GET(URL_V1 + "/parent/{id}")
     Call<ParentProfileRes> getParentProfile(@Path("id") String id, @Query("token") String token);
 
-    @POST(URL_V1 + "/parent/{id}")
-    Call<JsonObject> updateParentProfile(@Query("user_id") String userId, @Query("token") String token, @Body ParentProfileReq perentProfileReq);
+    @PUT(URL_V1 + "/parent/{id}")
+    Call<JsonObject> updateParentProfile(@Path("id") String userId, @Query("token") String token, @Body ParentProfileReq perentProfileReq);
 
     @GET(URL_V1 + "/parent/students")
     Call<StudentRes> getParentStudents(@Query("token") String token);
 
-    @POST(URL_V1 + "/studentProfile/{id}")
+    @PUT(URL_V1 + "/studentProfile/{id}")
     Call<JsonObject> updateStudentProfile(@Path("id") String id, @Query("token") String token, @Body StudentProfileReq studentProfileReq);
 
     @GET(URL_V1 + "/studentProfile/{id}")
@@ -70,6 +69,9 @@ public interface ApiInterface {
 
     @GET(URL_V1 + "/activity/{id}/details")
     Call<ActivityRes> getActivityDetails(@Path("id") String id, @Query("token") String token);
+
+    @POST(URL_V1 + "/activity/{id}/answer")
+    Call<ActivityRes> sendActivityAnswer(@Path("id") String id, @Query("token") String token, @Body ActivityAnswerReq activityAnswerReq);
 
     @GET(URL_V1 + "/studentProfile/{id}/attendance")
     Call<AttendanceRes> getAttendance(@Path("id") String id, @Query("token") String token);

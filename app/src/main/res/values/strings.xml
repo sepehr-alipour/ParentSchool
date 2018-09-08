@@ -25,6 +25,10 @@
     <string name="toast_warning_duplicate_school">این مدرسه قبلا ثبت شده است</string>
     <string name="toast_exit">لطفا برای خروج دوباره تلاش کنید</string>
     <string name="text_choose_school">انتخاب مدرسه از لیست:</string>
+    <string name="text_time_schedule">%1$s تا %2$s</string>
+    <string name="title_activities">لیست فعالیت های</string>
+    <string name="toast_success_notif">پیام شما با موفقیت ارسال شد</string>
+    <string name="toast_success_update">با موفقیت به روزرسانی شد</string>
     <string-array name="schools">
         <item>مدرسه البرز</item>
         <item>مدرسه آبان</item>
@@ -39,6 +43,15 @@
         <item>حسن جعفری</item>
         <item>همایون جعفری</item>
         <item>علی جعفری</item>
+    </string-array>
+    <string-array name="notification_type">
+        <item>عمومی</item>
+        <item>انضباطی</item>
+        <item>درخواستی</item>
+    </string-array>
+    <string-array name="activity_type">
+        <item>تکلیف دانش آموز</item>
+        <item>تکلیف اولیا</item>
     </string-array>
 
 </resources>
