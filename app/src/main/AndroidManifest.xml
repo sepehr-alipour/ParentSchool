@@ -31,6 +31,7 @@
         </activity>
         <activity
             android:name=".view.activity.ActivityLoading"
+            android:launchMode="singleTask"
             android:theme="@style/Theme.AppCompat.Translucent" />
         <activity
             android:name=".view.activity.ActivitySchools"
