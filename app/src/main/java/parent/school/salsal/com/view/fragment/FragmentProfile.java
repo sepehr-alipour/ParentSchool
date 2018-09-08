@@ -17,6 +17,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.adapter.AdapterPagerProfile;
+import parent.school.salsal.com.util.PreferenceManager;
 import parent.school.salsal.com.view.activity.ActivityEditProfile;
 import parent.school.salsal.com.view.activity.ActivitySchools;
 
@@ -102,12 +103,14 @@ public class FragmentProfile extends Fragment implements View.OnClickListener {
 
                     intent = new Intent(getContext(), ActivityEditProfile.class);
                     intent.putExtra(ActivityEditProfile.PARAMS_NAME_STUDENT, ActivityEditProfile.TYPE_PARENT);
+                    intent.putExtra(ActivityEditProfile.PARAMS_NAME_ID, PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_PARENT_ID));
                     startActivity(intent);
                     break;
                 case AdapterPagerProfile.POSITION_STUDENT:
 
                     intent = new Intent(getContext(), ActivityEditProfile.class);
                     intent.putExtra(ActivityEditProfile.PARAMS_NAME_STUDENT, ActivityEditProfile.TYPE_STUDENT);
+                    intent.putExtra(ActivityEditProfile.PARAMS_NAME_ID, PreferenceManager.getCurrentStudentId(getContext()));
                     startActivity(intent);
                     break;
 

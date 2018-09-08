@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import com.google.gson.JsonObject;
 
@@ -45,8 +46,6 @@ public class ActivityEditProfile extends BaseActivity implements View.OnClickLis
     AppCompatButton btnSend;
     @BindView(R.id.list)
     ScrollView list;
-    @BindView(R.id.edtNationalCode)
-    AppCompatEditText edtNationalCode;
     @BindView(R.id.layoutEducation)
     LinearLayout layoutEducation;
     @BindView(R.id.layoutEmail)
@@ -55,11 +54,12 @@ public class ActivityEditProfile extends BaseActivity implements View.OnClickLis
     LinearLayout layoutPhone;
 
     public static final String PARAMS_NAME_STUDENT = "view_type";
+    public static final String PARAMS_NAME_ID = "id";
     public static final int TYPE_STUDENT = 0;
     public static final int TYPE_PARENT = 1;
     private int viewType;
-    private String userId;
     private String token;
+    private String id;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,6 +70,7 @@ public class ActivityEditProfile extends BaseActivity implements View.OnClickLis
         btnSend.setOnClickListener(this);
         edtBirthday.setOnClickListener(this);
         viewType = getIntent().getIntExtra(PARAMS_NAME_STUDENT, -1);
+        id = getIntent().getStringExtra(PARAMS_NAME_ID);
         initViews();
 
     }
@@ -81,13 +82,11 @@ public class ActivityEditProfile extends BaseActivity implements View.OnClickLis
                 layoutEducation.setVisibility(View.GONE);
                 layoutEmail.setVisibility(View.GONE);
                 layoutPhone.setVisibility(View.GONE);
-                userId = PreferenceManager.getCurrentStudentId(this);
-                WebServiceHelper.get(this).getStudentProfile(userId, token)
+                WebServiceHelper.get(this).getStudentProfile(id, token)
                         .enqueue(new CallbackHandler<StudentProfileRes>(this, true, true) {
                             @Override
                             public void onSuccess(Response<StudentProfileRes> response) {
                                 edtBirthday.setText(response.body().getData().getBirthDate());
-                                edtNationalCode.setText(response.body().getData().getNationalCode());
                             }
 
                             @Override
@@ -97,14 +96,12 @@ public class ActivityEditProfile extends BaseActivity implements View.OnClickLis
                         });
                 break;
             case TYPE_PARENT:
-                userId = PreferenceManager.getUserProfile(this).get(PreferenceManager.PREF_PARENT_ID);
-                WebServiceHelper.get(this).getParentProfile(userId, token)
+                WebServiceHelper.get(this).getParentProfile(id, token)
                         .enqueue(new CallbackHandler<ParentProfileRes>(this, true, true) {
                             @Override
                             public void onSuccess(Response<ParentProfileRes> response) {
                                 edtEducation.setText(response.body().getData().getEducation());
                                 edtEmail.setText(response.body().getData().getEmail());
-                                edtNationalCode.setText(response.body().getData().getNationalCode());
                                 edtPhone.setText(response.body().getData().getPhoneNumber());
                                 edtBirthday.setText(response.body().getData().getBirthDate());
 
@@ -125,13 +122,17 @@ public class ActivityEditProfile extends BaseActivity implements View.OnClickLis
             case R.id.btnSend:
                 switch (viewType) {
                     case TYPE_PARENT:
-                        //todo set data to update
                         ParentProfileReq parentProfileReq = new ParentProfileReq();
-                        WebServiceHelper.get(this).updateParentProfile(userId, token, parentProfileReq)
+                        parentProfileReq.setBirthDate(edtBirthday.getText().toString());
+                        parentProfileReq.setEducation(edtEducation.getText().toString());
+                        parentProfileReq.setEmail(edtEmail.getText().toString());
+                        parentProfileReq.setPhoneNumber(edtPhone.getText().toString());
+                        WebServiceHelper.get(this).updateParentProfile(PreferenceManager.getUserProfile(this).get(PreferenceManager.PREF_PARENT_ID), token, parentProfileReq)
                                 .enqueue(new CallbackHandler<JsonObject>(this, true, true) {
                                     @Override
                                     public void onSuccess(Response<JsonObject> response) {
-
+                                        Toast.makeText(ActivityEditProfile.this, R.string.toast_success_update, Toast.LENGTH_SHORT).show();
+                                        finish();
                                     }
 
                                     @Override
@@ -141,14 +142,13 @@ public class ActivityEditProfile extends BaseActivity implements View.OnClickLis
                                 });
                         break;
                     case TYPE_STUDENT:
-                        //todo 405 error
                         StudentProfileReq studentProfileReq = new StudentProfileReq();
                         studentProfileReq.setBirthDate(edtBirthday.getText().toString());
-                        studentProfileReq.setNationalCode(edtNationalCode.getText().toString());
-                        WebServiceHelper.get(this).updateStudentProfile(userId, token, studentProfileReq)
+                        WebServiceHelper.get(this).updateStudentProfile(id, token, studentProfileReq)
                                 .enqueue(new CallbackHandler<JsonObject>(this, true, true) {
                                     @Override
                                     public void onSuccess(Response<JsonObject> response) {
+                                        Toast.makeText(ActivityEditProfile.this, R.string.toast_success_update, Toast.LENGTH_SHORT).show();
                                         finish();
                                     }
 

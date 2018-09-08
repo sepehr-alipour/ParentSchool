@@ -160,33 +160,6 @@
                             android:paddingTop="50dp" />
                     </LinearLayout>
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="25dp"
-                        android:drawablePadding="10dp"
-                        android:drawableRight="@drawable/ic_action_code"
-                        android:gravity="center_vertical"
-                        android:text="کد ملی"
-                        android:textSize="18sp" />
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:layout_marginTop="10dp"
-                        android:background="@color/gray_divider" />
-
-                    <android.support.v7.widget.AppCompatEditText
-                        android:id="@+id/edtNationalCode"
-                        style="@style/EditTextStyle"
-                        android:layout_width="match_parent"
-                        android:layout_gravity="center"
-                        android:layout_marginBottom="30dp"
-                        android:layout_marginTop="@dimen/space_10_dp"
-                        android:gravity="right|center"
-                        android:inputType="number"
-                        android:paddingTop="50dp" />
-
 
                 </LinearLayout>
             </android.support.v7.widget.CardView>

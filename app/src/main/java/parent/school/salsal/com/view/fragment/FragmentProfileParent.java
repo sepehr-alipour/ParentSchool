@@ -54,32 +54,38 @@ public class FragmentProfileParent extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile_parent, container, false);
         unbinder = ButterKnife.bind(this, view);
-        WebServiceHelper.get(getContext()).getParentProfile(PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_PARENT_ID)
-                , PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_TOKEN)).enqueue(new CallbackHandler<ParentProfileRes>(getContext(), true, true) {
-            @Override
-            public void onSuccess(Response<ParentProfileRes> response) {
-                if (isAdded()) {
-                    txtName.setText(response.body().getData().getName());
-                    txtBirthday.setText(response.body().getData().getBirthDate());
-                    txtEducation.setText(response.body().getData().getEducation());
-                    txtMobile.setText(response.body().getData().getPhoneNumber());
-                    txtEmail.setText(response.body().getData().getEmail());
-                    txtNationalCode.setText(response.body().getData().getNationalCode());
-                    RequestOptions requestOptions = new RequestOptions();
-                    requestOptions.placeholder(R.drawable.ic_action_profile);
-                    Glide.with(getContext())
-                            .setDefaultRequestOptions(requestOptions)
-                            .load(response.body().getData().getImageUrl())
-                            .into(profileImage);
-                }
+        final String token = PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_TOKEN);
+        WebServiceHelper.get(getContext()).getParentProfile(PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_USER_ID)
+                , token)
+                .enqueue(new CallbackHandler<ParentProfileRes>(getContext(), true, true) {
+                    @Override
+                    public void onSuccess(Response<ParentProfileRes> response) {
+                        if (isAdded()) {
+                            txtName.setText(response.body().getData().getName());
+                            txtBirthday.setText(response.body().getData().getBirthDate());
+                            txtEducation.setText(response.body().getData().getEducation());
+                            txtMobile.setText(response.body().getData().getPhoneNumber());
+                            txtEmail.setText(response.body().getData().getEmail());
+                            txtNationalCode.setText(response.body().getData().getNationalCode());
+                            PreferenceManager.SaveUserProfile(getContext(),
+                                    response.body().getData().getUserId() + "",
+                                    response.body().getData().getId() + "",
+                                    token);
+                            RequestOptions requestOptions = new RequestOptions();
+                            requestOptions.placeholder(R.drawable.ic_action_profile);
+                            Glide.with(getContext())
+                                    .setDefaultRequestOptions(requestOptions)
+                                    .load(response.body().getData().getImageUrl())
+                                    .into(profileImage);
+                        }
 
-            }
+                    }
 
-            @Override
-            public void onFailed(APIErrorResult errorResult) {
+                    @Override
+                    public void onFailed(APIErrorResult errorResult) {
 
-            }
-        });
+                    }
+                });
         return view;
     }
 
