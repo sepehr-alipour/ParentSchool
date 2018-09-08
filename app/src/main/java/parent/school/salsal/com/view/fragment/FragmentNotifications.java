@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
-import java.util.ArrayList;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -98,7 +96,7 @@ public class FragmentNotifications extends BaseFragment implements OnNotifClickL
 
     @Override
     public void clicked(NotificationRes.DataBean notification) {
-        if ((notification.getUserId() + "").equalsIgnoreCase(PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_PARENT_ID))) {
+        if ((notification.getUserId() + "").equalsIgnoreCase(PreferenceManager.getUserProfile(getContext()).get(PreferenceManager.PREF_USER_ID))) {
             return;
         }
         Intent intent = new Intent(getContext(), ActivityNotifDetail.class);

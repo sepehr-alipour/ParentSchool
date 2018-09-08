@@ -37,18 +37,21 @@ public class AdapterNotif extends RecyclerView.Adapter<AdapterNotif.ViewHolder> 
         final NotificationRes.DataBean itemList = listNotif.get(position);
         holder.txtDate.setText(itemList.getCreatedAt());
         holder.txtDesc.setText(itemList.getMessage());
-        holder.txtSender.setText(itemList.getUserId() + "");
+        holder.txtSender.setText(itemList.getName());
         holder.txtTitle.setText(itemList.getTitle());
-      /*  String[] testArray = holder.txtDate.getContext().getResources().getStringArray(R.array.notification_type);
+        String[] notification_type = holder.txtDate.getContext().getResources().getStringArray(R.array.notification_type);
 
         switch (itemList.getType()) {
             case 1:
-                holder.txtType.setText(testArray[0].split("-")[0]);
+                holder.txtType.setText(notification_type[0]);
                 break;
             case 2:
-                holder.txtType.setText(testArray[1].split("-")[0]);
+                holder.txtType.setText(notification_type[1]);
                 break;
-        }*/
+            case 3:
+                holder.txtType.setText(notification_type[1]);
+                break;
+        }
     }
 
     @Override

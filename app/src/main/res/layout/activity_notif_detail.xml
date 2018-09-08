@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".view.Activities.ActivityNotifDetail">
+   >
 
     <ScrollView
         android:layout_width="match_parent"
@@ -22,6 +22,7 @@
             <android.support.v7.widget.AppCompatEditText
                 android:id="@+id/edtResponse"
                 style="@style/EditTextStyle"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/space_5_dp"
@@ -30,7 +31,6 @@
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/btnSend"
-                style="@style/Base.Widget.AppCompat.Button.Colored"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
@@ -41,6 +41,7 @@
                 android:background="@drawable/shape_pink_blank"
                 android:inputType="text"
                 android:text="ارسال پاسخ"
+                android:visibility="gone"
                 android:textColor="@color/colorPrimary" />
         </LinearLayout>
     </ScrollView>

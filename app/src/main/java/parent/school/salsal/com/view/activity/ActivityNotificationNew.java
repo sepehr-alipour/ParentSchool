@@ -119,12 +119,13 @@ public class ActivityNotificationNew extends BaseActivity implements View.OnClic
         switch (pos) {
             case 0:
                 List<Integer> users = new ArrayList<>();
+                //todo what is admin user id
                 users.add(24);
                 SendNotificationReq sendNotificationReq = new SendNotificationReq();
                 sendNotificationReq.setMessage(edtMessage.getText().toString());
                 sendNotificationReq.setTitle(edtTitle.getText().toString());
                 sendNotificationReq.setUserIds(users);
-                sendNotificationReq.setType("1");
+                sendNotificationReq.setType(1);
                 sendNotificationReq.setFileUrl("http://google.com");
                 sendNotificationReq.setRecipientType(sendNotificationReq.RECIPIENT_TYPE_UNIT);
                 sendNotif(sendNotificationReq);
@@ -179,7 +180,7 @@ public class ActivityNotificationNew extends BaseActivity implements View.OnClic
         notificationReq.setFileUrl("link");
         notificationReq.setTitle(edtTitle.getText().toString());
         notificationReq.setMessage(edtMessage.getText().toString());
-        notificationReq.setType("1");
+        notificationReq.setType(1);
         notificationReq.setRecipientType(notificationReq.RECIPIENT_TYPE_TEACHER);
 
         sendNotif(notificationReq);
