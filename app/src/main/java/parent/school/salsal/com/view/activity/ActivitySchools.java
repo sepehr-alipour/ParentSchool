@@ -112,7 +112,6 @@ public class ActivitySchools extends BaseActivity {
                     loginReq.setChecked(true);
                     loginReq.setSchoolName(selectedSchool.getName());
                     loginReq.setId(PreferenceManager.getSchoolConnections().size() + 1);
-                    //todo
                     if (PreferenceManager.addSchoolConnection(loginReq)) {
                         startActivity(new Intent(ActivitySchools.this, ActivityLogin.class));
                         return;

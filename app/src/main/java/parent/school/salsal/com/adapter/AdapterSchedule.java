@@ -1,14 +1,20 @@
 package parent.school.salsal.com.adapter;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -38,6 +44,15 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.ViewHo
         holder.txtClass.setText(itemList.getName());
         holder.txtCourse.setText(itemList.getTitle());
         holder.txtPriority.setText(holder.txtClass.getContext().getResources().getString(R.string.priority, itemList.getPriority()));
+        Calendar cal = Calendar.getInstance(Locale.ENGLISH);
+        cal.setTimeInMillis(itemList.getStartTime());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm",Locale.getDefault());
+        dateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
+        String startTime = dateFormat.format(itemList.getStartTime()*1000L);
+        String endTime = dateFormat.format(itemList.getEndTime()*1000L);
+
+
+        holder.txtTime.setText(holder.txtTime.getContext().getResources().getString(R.string.text_time_schedule, startTime, endTime));
         if (position > 0 && itemList.getDayOfWeek() == listSchedule.get(position - 1).getDayOfWeek()) {
             holder.txtDay.setVisibility(View.GONE);
         } else {
@@ -82,6 +97,8 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.ViewHo
         TextView txtClass;
         @BindView(R.id.txtCourse)
         TextView txtCourse;
+        @BindView(R.id.txt_time)
+        TextView txtTime;
 
 
         public ViewHolder(View itemView) {

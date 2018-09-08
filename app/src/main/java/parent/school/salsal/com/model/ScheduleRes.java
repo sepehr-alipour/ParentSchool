@@ -6,8 +6,9 @@ import java.util.List;
 
 public class ScheduleRes {
 
+
     /**
-     * data : [{"day_of_week":0,"priority":1,"title":"Math","name":"sepehr"},{"day_of_week":0,"priority":2,"title":"Math","name":"sepehr"},{"day_of_week":1,"priority":1,"title":"Math","name":"sepehr"},{"day_of_week":3,"priority":1,"title":"Math","name":"sepehr"}]
+     * data : [{"day_of_week":0,"priority":1,"start_time":1531218786,"end_time":1531218809,"title":"ریاضی","name":"علی کمالی"},{"day_of_week":0,"priority":2,"start_time":1531218786,"end_time":1531218809,"title":"ریاضی","name":"علی کمالی"},{"day_of_week":1,"priority":1,"start_time":1531218786,"end_time":1531218809,"title":"ریاضی","name":"علی کمالی"},{"day_of_week":3,"priority":1,"start_time":1531218786,"end_time":1531218809,"title":"ریاضی","name":"علی کمالی"}]
      * msg : ok
      */
 
@@ -36,14 +37,20 @@ public class ScheduleRes {
         /**
          * day_of_week : 0
          * priority : 1
-         * title : Math
-         * name : sepehr
+         * start_time : 1531218786
+         * end_time : 1531218809
+         * title : ریاضی
+         * name : علی کمالی
          */
 
         @SerializedName("day_of_week")
         private int dayOfWeek;
         @SerializedName("priority")
         private int priority;
+        @SerializedName("start_time")
+        private int startTime;
+        @SerializedName("end_time")
+        private int endTime;
         @SerializedName("title")
         private String title;
         @SerializedName("name")
@@ -63,6 +70,22 @@ public class ScheduleRes {
 
         public void setPriority(int priority) {
             this.priority = priority;
+        }
+
+        public int getStartTime() {
+            return startTime;
+        }
+
+        public void setStartTime(int startTime) {
+            this.startTime = startTime;
+        }
+
+        public int getEndTime() {
+            return endTime;
+        }
+
+        public void setEndTime(int endTime) {
+            this.endTime = endTime;
         }
 
         public String getTitle() {

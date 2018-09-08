@@ -82,7 +82,9 @@ public class ActivityLogin extends BaseActivity implements View.OnClickListener 
                 WebServiceHelper.get(ActivityLogin.this).loginUser(loginReq).enqueue(new CallbackHandler<LoginRes>(ActivityLogin.this, true, true) {
                     @Override
                     public void onSuccess(Response<LoginRes> response) {
-                        PreferenceManager.SaveUserProfile(ActivityLogin.this, response.body().getData().getUserId(), response.body().getData().getToken());
+                        PreferenceManager.SaveUserProfile(ActivityLogin.this,
+                                response.body().getData().getUserId(), null, response.body().getData().getToken()
+                        );
                         Intent intent = new Intent(ActivityLogin.this, ActivityChildren.class);
                         startActivity(intent);
                     }
