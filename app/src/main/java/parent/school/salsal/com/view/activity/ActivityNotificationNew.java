@@ -1,15 +1,15 @@
 package parent.school.salsal.com.view.activity;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetBehavior;
-import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatEditText;
-import android.support.v7.widget.AppCompatSpinner;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.Nullable;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.AppCompatSpinner;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
@@ -119,13 +119,12 @@ public class ActivityNotificationNew extends BaseActivity implements View.OnClic
         switch (pos) {
             case 0:
                 List<Integer> users = new ArrayList<>();
-                //todo what is admin user id
-                users.add(24);
+                users.add(PreferenceManager.getAdminId(this));
                 SendNotificationReq sendNotificationReq = new SendNotificationReq();
                 sendNotificationReq.setMessage(edtMessage.getText().toString());
                 sendNotificationReq.setTitle(edtTitle.getText().toString());
                 sendNotificationReq.setUserIds(users);
-                sendNotificationReq.setType(1);
+                sendNotificationReq.setType(1);//public notif
                 sendNotificationReq.setFileUrl("http://google.com");
                 sendNotificationReq.setRecipientType(sendNotificationReq.RECIPIENT_TYPE_UNIT);
                 sendNotif(sendNotificationReq);
@@ -180,7 +179,7 @@ public class ActivityNotificationNew extends BaseActivity implements View.OnClic
         notificationReq.setFileUrl("link");
         notificationReq.setTitle(edtTitle.getText().toString());
         notificationReq.setMessage(edtMessage.getText().toString());
-        notificationReq.setType(1);
+        notificationReq.setType(1);//public notif
         notificationReq.setRecipientType(notificationReq.RECIPIENT_TYPE_TEACHER);
 
         sendNotif(notificationReq);

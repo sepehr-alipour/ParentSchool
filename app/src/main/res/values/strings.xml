@@ -50,8 +50,10 @@
         <item>درخواستی</item>
     </string-array>
     <string-array name="activity_type">
-        <item>تکلیف دانش آموز</item>
-        <item>تکلیف اولیا</item>
+        <item>فعالیت اولیا</item>
+        <item>فعالیت کلاسی</item>
+        <item>کار در منزل</item>
+        <item>کوئیز</item>
     </string-array>
 
 </resources>

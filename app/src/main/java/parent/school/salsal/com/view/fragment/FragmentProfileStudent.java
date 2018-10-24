@@ -2,10 +2,6 @@ package parent.school.salsal.com.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.AppCompatButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,16 +10,19 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.widget.NestedScrollView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.model.StudentProfileRes;
-import parent.school.salsal.com.model.StudentRes;
 import parent.school.salsal.com.util.PreferenceManager;
+import parent.school.salsal.com.util.Utils;
 import parent.school.salsal.com.view.activity.ActivityChildren;
-import parent.school.salsal.com.view.activity.ActivityLogin;
 import parent.school.salsal.com.webservice.APIErrorResult;
 import parent.school.salsal.com.webservice.CallbackHandler;
 import parent.school.salsal.com.webservice.WebServiceHelper;
@@ -62,7 +61,7 @@ public class FragmentProfileStudent extends BaseFragment {
                 if (isAdded()) {
                     txtStdId.setText(response.body().getData().getId() + "");
                     txtName.setText(response.body().getData().getName());
-                    txtBirthday.setText(response.body().getData().getBirthDate() + "");
+                    txtBirthday.setText(Utils.convertBirthdayToString(response.body().getData().getBirthDate()));
                     txtNationalCode.setText(response.body().getData().getNationalCode() + "");
                     RequestOptions requestOptions = new RequestOptions();
                     requestOptions.placeholder(R.drawable.ic_action_profile);

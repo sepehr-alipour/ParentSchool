@@ -1,7 +1,7 @@
 package parent.school.salsal.com.adapter;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +15,7 @@ import parent.school.salsal.com.R;
 import parent.school.salsal.com.interfaces.OnDataSelectListener;
 import parent.school.salsal.com.model.AttendanceRes;
 import parent.school.salsal.com.model.CourseRes;
+import parent.school.salsal.com.util.Utils;
 
 public class AdapterAttendance extends RecyclerView.Adapter<AdapterAttendance.ViewHolder> {
     private final List<AttendanceRes.DataBean> listCource;
@@ -36,9 +37,9 @@ public class AdapterAttendance extends RecyclerView.Adapter<AdapterAttendance.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         final AttendanceRes.DataBean itemList = listCource.get(position);
-        holder.txtDate.setText(itemList.getCreatedAt());
+        holder.txtDate.setText(itemList.getCreatedAt());//Utils.convertBirthdayToString(itemList.getCreatedAt()));
         holder.txtDesc.setText(itemList.getStatus() == 1 ? "حاضر" : "غایب");
-        holder.txtReason.setText(itemList.getStatus() == 0 ? "غیبت موجه" : "بدون اشکال");
+        holder.txtReason.setText(itemList.getStatus() == 0 ? "0 دقیقه" : "0 دقیقه");
         holder.txtTitle.setText(itemList.getTitle() + "(" + itemList.getName() + ")");
     }
 

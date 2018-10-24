@@ -1,9 +1,11 @@
 package parent.school.salsal.com.view.activity;
 
 import android.os.Bundle;
-import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -12,6 +14,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import io.reactivex.internal.operators.parallel.ParallelFromArray;
 import parent.school.salsal.com.R;
+import parent.school.salsal.com.model.ActivityDetailRes;
 import parent.school.salsal.com.model.ActivityRes;
 import parent.school.salsal.com.util.PreferenceManager;
 import parent.school.salsal.com.webservice.APIErrorResult;
@@ -41,11 +44,13 @@ public class ActivityDetails extends BaseActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activity_details);
         ButterKnife.bind(this);
-        String activityId = getIntent().getStringExtra(PARAM_ACTIVITY_ID);
+        int activityId = getIntent().getIntExtra(PARAM_ACTIVITY_ID, -1);
         String token = PreferenceManager.getUserProfile(this).get(PreferenceManager.PREF_TOKEN);
-        WebServiceHelper.get(this).getActivityDetails(activityId, token).enqueue(new CallbackHandler<ActivityRes>(this,true,true) {
+        WebServiceHelper.get(this).getActivityDetails(activityId, token).enqueue(new CallbackHandler<ActivityDetailRes>(this, true, true) {
             @Override
-            public void onSuccess(Response<ActivityRes> response) {
+            public void onSuccess(Response<ActivityDetailRes> response) {
+                txtDetails.setText(response.body().getData().get(0).getActivityDesc());
+                txtTitle.setText(response.body().getData().get(0).getActivityTitle());
             }
 
             @Override

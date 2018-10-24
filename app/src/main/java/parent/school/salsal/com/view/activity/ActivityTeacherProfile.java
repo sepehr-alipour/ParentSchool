@@ -1,8 +1,8 @@
 package parent.school.salsal.com.view.activity;
 
 import android.os.Bundle;
-import android.support.v4.widget.NestedScrollView;
-import android.support.v7.widget.AppCompatRatingBar;
+import androidx.core.widget.NestedScrollView;
+import androidx.appcompat.widget.AppCompatRatingBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -15,6 +15,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.model.TeacherProfileRes;
 import parent.school.salsal.com.util.PreferenceManager;
+import parent.school.salsal.com.util.Utils;
 import parent.school.salsal.com.webservice.APIErrorResult;
 import parent.school.salsal.com.webservice.CallbackHandler;
 import parent.school.salsal.com.webservice.WebServiceHelper;
@@ -61,7 +62,7 @@ public class ActivityTeacherProfile extends BaseActivity {
         WebServiceHelper.get(this).getTeacherProfile(id, PreferenceManager.getUserProfile(this).get(PreferenceManager.PREF_TOKEN)).enqueue(new CallbackHandler<TeacherProfileRes>(this, true, true) {
             @Override
             public void onSuccess(Response<TeacherProfileRes> response) {
-                txtBirthday.setText(response.body().getData().getBirthDate());
+                txtBirthday.setText(Utils.convertBirthdayToString(response.body().getData().getBirthDate()));
                 txtEducation.setText(response.body().getData().getEducation());
                 txtEmail.setText(response.body().getData().getEmail());
                 txtMobile.setText(response.body().getData().getPhoneNumber());

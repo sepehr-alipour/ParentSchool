@@ -56,13 +56,13 @@ public class ActivityRes {
         @SerializedName("desc")
         private String desc;
         @SerializedName("expire_date")
-        private String expireDate;
+        private long expireDate;
         @SerializedName("file_address")
         private String fileAddress;
         @SerializedName("atype_id")
         private int atypeId;
         @SerializedName("created_at")
-        private String createdAt;
+        private long createdAt;
         @SerializedName("updated_at")
         private String updatedAt;
         @SerializedName("pivot")
@@ -100,11 +100,11 @@ public class ActivityRes {
             this.desc = desc;
         }
 
-        public String getExpireDate() {
+        public long getExpireDate() {
             return expireDate;
         }
 
-        public void setExpireDate(String expireDate) {
+        public void setExpireDate(long expireDate) {
             this.expireDate = expireDate;
         }
 
@@ -124,11 +124,11 @@ public class ActivityRes {
             this.atypeId = atypeId;
         }
 
-        public String getCreatedAt() {
+        public long getCreatedAt() {
             return createdAt;
         }
 
-        public void setCreatedAt(String createdAt) {
+        public void setCreatedAt(long createdAt) {
             this.createdAt = createdAt;
         }
 

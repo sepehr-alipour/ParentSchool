@@ -8,6 +8,7 @@ import com.orhanobut.hawk.Hawk;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import io.reactivex.internal.operators.completable.CompletableOnErrorComplete;
 import parent.school.salsal.com.model.LoginReq;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -28,6 +29,7 @@ public class PreferenceManager {
     public static final String PREF_PARENT_ID = "parent_id";
     public static final String PREF_STUDENT_ID = "student_id";
     public static final String PREF_COURSE_ID = "course_id";
+    public static final String PREF_ADMIN_ID = "admin_id";
     public static final String PREF_CLASS_ID = "class_id";
 
     public static PreferenceManager getInstance() {
@@ -113,7 +115,7 @@ public class PreferenceManager {
         return Hawk.get(PREF_SCHOOL_CONNECTION, new ArrayList<LoginReq>());
     }
 
-    public static void SaveUserProfile(Context context, String id,String parentId, String token) {
+    public static void SaveUserProfile(Context context, String id, String parentId, String token) {
         SharedPreferences.Editor editor = context.getSharedPreferences(PRE_USER_PROFILE, MODE_PRIVATE).edit();
         editor.putString(PREF_TOKEN, token);
         editor.putString(PREF_USER_ID, id);
@@ -127,6 +129,13 @@ public class PreferenceManager {
         editor.apply();
     }
 
+    public static void saveAdminId(Context context, int adminId) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(PRE_USER_PROFILE, MODE_PRIVATE).edit();
+        editor.putInt(PREF_ADMIN_ID, adminId);
+        editor.apply();
+
+    }
+
     public static void saveTeacherClass(Context context, int teacherClass) {
         SharedPreferences.Editor editor = context.getSharedPreferences(PRE_USER_PROFILE, MODE_PRIVATE).edit();
         editor.putInt(PREF_CLASS_ID, teacherClass);
@@ -136,6 +145,10 @@ public class PreferenceManager {
     public static int getTeacherClassId(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PRE_USER_PROFILE, MODE_PRIVATE);
         return prefs.getInt(PREF_CLASS_ID, -1);
+    }
+    public static int getAdminId(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(PRE_USER_PROFILE, MODE_PRIVATE);
+        return prefs.getInt(PREF_ADMIN_ID, -1);
     }
 
     public static int getTeacherCourseId(Context context) {

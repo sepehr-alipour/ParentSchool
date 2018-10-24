@@ -53,8 +53,8 @@ public class StudentRes {
         @SerializedName("name")
         private String name;
         @SerializedName("birth_date")
-        private Object birthDate;
-        @SerializedName("image_url")
+        private long birthDate;
+        @SerializedName("media_id")
         private Object imageUrl;
         @SerializedName("email")
         private Object email;
@@ -87,11 +87,11 @@ public class StudentRes {
             this.name = name;
         }
 
-        public Object getBirthDate() {
+        public long getBirthDate() {
             return birthDate;
         }
 
-        public void setBirthDate(Object birthDate) {
+        public void setBirthDate(long birthDate) {
             this.birthDate = birthDate;
         }
 

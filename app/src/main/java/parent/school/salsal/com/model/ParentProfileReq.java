@@ -15,7 +15,7 @@ public class ParentProfileReq {
     @SerializedName("education")
     private String education;
     @SerializedName("birth_date")
-    private String birthDate;
+    private long birthDate;
     @SerializedName("email")
     private String email;
     @SerializedName("phone_number")
@@ -29,11 +29,11 @@ public class ParentProfileReq {
         this.education = education;
     }
 
-    public String getBirthDate() {
+    public long getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(long birthDate) {
         this.birthDate = birthDate;
     }
 

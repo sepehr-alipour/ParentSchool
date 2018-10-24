@@ -20,8 +20,8 @@ public class StudentProfileReq {
     @SerializedName("name")
     private String name;
     @SerializedName("birth_date")
-    private String birthDate;
-    @SerializedName("image_url")
+    private long birthDate;
+    @SerializedName("media_id")
     private String imageUrl;
     @SerializedName("email")
     private String email;
@@ -46,11 +46,11 @@ public class StudentProfileReq {
         this.name = name;
     }
 
-    public String getBirthDate() {
+    public long getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(long birthDate) {
         this.birthDate = birthDate;
     }
 

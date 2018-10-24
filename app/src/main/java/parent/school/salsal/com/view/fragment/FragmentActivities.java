@@ -1,22 +1,16 @@
 package parent.school.salsal.com.view.fragment;
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import parent.school.salsal.com.R;
-import parent.school.salsal.com.model.ActivityRes;
-import parent.school.salsal.com.util.PreferenceManager;
-import parent.school.salsal.com.webservice.APIErrorResult;
-import parent.school.salsal.com.webservice.CallbackHandler;
-import parent.school.salsal.com.webservice.WebServiceHelper;
-import retrofit2.Response;
 
 public class FragmentActivities extends Fragment {
 

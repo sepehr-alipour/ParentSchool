@@ -2,10 +2,10 @@ package parent.school.salsal.com.view.activity;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.AppCompatEditText;
-import android.support.v7.widget.Toolbar;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatEditText;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.google.gson.JsonObject;
 
-import junit.runner.BaseTestRunner;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +25,7 @@ import parent.school.salsal.com.model.ParentProfileRes;
 import parent.school.salsal.com.model.StudentProfileReq;
 import parent.school.salsal.com.model.StudentProfileRes;
 import parent.school.salsal.com.util.PreferenceManager;
+import parent.school.salsal.com.util.Utils;
 import parent.school.salsal.com.webservice.APIErrorResult;
 import parent.school.salsal.com.webservice.CallbackHandler;
 import parent.school.salsal.com.webservice.WebServiceHelper;
@@ -86,7 +86,9 @@ public class ActivityEditProfile extends BaseActivity implements View.OnClickLis
                         .enqueue(new CallbackHandler<StudentProfileRes>(this, true, true) {
                             @Override
                             public void onSuccess(Response<StudentProfileRes> response) {
-                                edtBirthday.setText(response.body().getData().getBirthDate());
+                                edtBirthday.setText(Utils.convertBirthdayToString(response.body().getData().getBirthDate()));
+                                edtBirthday.setTag(response.body().getData().getBirthDate());
+
                             }
 
                             @Override
@@ -103,7 +105,9 @@ public class ActivityEditProfile extends BaseActivity implements View.OnClickLis
                                 edtEducation.setText(response.body().getData().getEducation());
                                 edtEmail.setText(response.body().getData().getEmail());
                                 edtPhone.setText(response.body().getData().getPhoneNumber());
-                                edtBirthday.setText(response.body().getData().getBirthDate());
+                                edtBirthday.setText(Utils.convertBirthdayToString(response.body().getData().getBirthDate()));
+                                edtBirthday.setTag(response.body().getData().getBirthDate());
+
 
                             }
 
@@ -123,7 +127,7 @@ public class ActivityEditProfile extends BaseActivity implements View.OnClickLis
                 switch (viewType) {
                     case TYPE_PARENT:
                         ParentProfileReq parentProfileReq = new ParentProfileReq();
-                        parentProfileReq.setBirthDate(edtBirthday.getText().toString());
+                        parentProfileReq.setBirthDate((Long) edtBirthday.getTag());
                         parentProfileReq.setEducation(edtEducation.getText().toString());
                         parentProfileReq.setEmail(edtEmail.getText().toString());
                         parentProfileReq.setPhoneNumber(edtPhone.getText().toString());
@@ -143,7 +147,7 @@ public class ActivityEditProfile extends BaseActivity implements View.OnClickLis
                         break;
                     case TYPE_STUDENT:
                         StudentProfileReq studentProfileReq = new StudentProfileReq();
-                        studentProfileReq.setBirthDate(edtBirthday.getText().toString());
+                        studentProfileReq.setBirthDate((Long) edtBirthday.getTag());
                         WebServiceHelper.get(this).updateStudentProfile(id, token, studentProfileReq)
                                 .enqueue(new CallbackHandler<JsonObject>(this, true, true) {
                                     @Override
@@ -177,6 +181,7 @@ public class ActivityEditProfile extends BaseActivity implements View.OnClickLis
     @Override
     public void onDateSelected(PersianCalendar persianCalendar) {
         edtBirthday.setText(persianCalendar.getPersianShortDate());
+        edtBirthday.setTag(persianCalendar.getTimeInMillis() / 1000);
     }
 
     @Override

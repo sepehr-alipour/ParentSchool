@@ -1,7 +1,7 @@
 package parent.school.salsal.com.adapter;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +14,7 @@ import butterknife.ButterKnife;
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.interfaces.OnNotifClickListener;
 import parent.school.salsal.com.model.NotificationRes;
+import parent.school.salsal.com.util.Utils;
 
 public class AdapterNotif extends RecyclerView.Adapter<AdapterNotif.ViewHolder> {
     private final List<NotificationRes.DataBean> listNotif;
@@ -35,9 +36,9 @@ public class AdapterNotif extends RecyclerView.Adapter<AdapterNotif.ViewHolder> 
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         final NotificationRes.DataBean itemList = listNotif.get(position);
-        holder.txtDate.setText(itemList.getCreatedAt());
+        holder.txtDate.setText(Utils.convertBirthdayToString(itemList.getCreatedAt()) );
         holder.txtDesc.setText(itemList.getMessage());
-        holder.txtSender.setText(itemList.getName());
+        holder.txtSender.setText(itemList.getRecipientName() != null ? itemList.getRecipientName() : itemList.getSenderName() + "(" + itemList.getRoleTitle() + ")");
         holder.txtTitle.setText(itemList.getTitle());
         String[] notification_type = holder.txtDate.getContext().getResources().getStringArray(R.array.notification_type);
 
@@ -88,7 +89,8 @@ public class AdapterNotif extends RecyclerView.Adapter<AdapterNotif.ViewHolder> 
 
         @Override
         public void onClick(View v) {
-            notifClickListener.clicked(listNotif.get(getAdapterPosition()));
+            if (listNotif.get(getAdapterPosition()).getRecipientName() == null)
+                notifClickListener.clicked(listNotif.get(getAdapterPosition()));
 
         }
     }

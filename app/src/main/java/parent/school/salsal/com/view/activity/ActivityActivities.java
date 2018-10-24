@@ -2,11 +2,15 @@ package parent.school.salsal.com.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+
+import androidx.annotation.Nullable;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 
 import java.util.ArrayList;
@@ -59,7 +63,9 @@ public class ActivityActivities extends BaseActivity implements OnDataSelectList
 
     @Override
     public void dataSelected(Object data) {
-        startActivity(new Intent(this, ActivityDetails.class));
+        Intent intent = new Intent(this, ActivityDetails.class);
+        intent.putExtra(ActivityDetails.PARAM_ACTIVITY_ID, ((ActivityRes.DataBean) data).getId());
+        startActivity(intent);
     }
 
     @Override

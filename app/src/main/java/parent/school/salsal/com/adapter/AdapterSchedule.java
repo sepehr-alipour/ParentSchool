@@ -1,8 +1,8 @@
 package parent.school.salsal.com.adapter;
 
 import android.annotation.SuppressLint;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,6 +42,7 @@ public class AdapterSchedule extends RecyclerView.Adapter<AdapterSchedule.ViewHo
 
         ScheduleRes.DataBean itemList = listSchedule.get(position);
         holder.txtClass.setText(itemList.getName());
+        //todo get course name
         holder.txtCourse.setText(itemList.getTitle());
         holder.txtPriority.setText(holder.txtClass.getContext().getResources().getString(R.string.priority, itemList.getPriority()));
         Calendar cal = Calendar.getInstance(Locale.ENGLISH);

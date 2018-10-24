@@ -7,6 +7,8 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.JsonPrimitive;
 
+import java.util.logging.Handler;
+
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.view.activity.ActivityLoading;
 import retrofit2.Call;
@@ -46,10 +48,11 @@ public abstract class CallbackHandler<T> implements Callback<T> {
         //MessageBox.HideLoading(context);
 
         if (response.isSuccessful() && response.body() != null) {
-            onSuccess(response);
+
             if (ActivityLoading.instance != null) {
                 ActivityLoading.instance.finish();
             }
+            onSuccess(response);
         } else {
             APIErrorResult apiErrorResult = null;
             try {

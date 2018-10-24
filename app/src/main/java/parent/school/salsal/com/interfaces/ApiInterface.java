@@ -5,6 +5,7 @@ import com.google.gson.JsonObject;
 import java.util.List;
 
 import parent.school.salsal.com.model.ActivityAnswerReq;
+import parent.school.salsal.com.model.ActivityDetailRes;
 import parent.school.salsal.com.model.ActivityRes;
 import parent.school.salsal.com.model.AttendanceRes;
 import parent.school.salsal.com.model.CourseRes;
@@ -22,6 +23,7 @@ import parent.school.salsal.com.model.StudentProfileRes;
 import parent.school.salsal.com.model.StudentRes;
 import parent.school.salsal.com.model.TeacherProfileRes;
 import parent.school.salsal.com.model.TeachersProfileRes;
+import parent.school.salsal.com.model.UnitAdmins;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -68,7 +70,7 @@ public interface ApiInterface {
     Call<ActivityRes> getActivities(@Path("id") String id, @Query("token") String token);
 
     @GET(URL_V1 + "/activity/{id}/details")
-    Call<ActivityRes> getActivityDetails(@Path("id") String id, @Query("token") String token);
+    Call<ActivityDetailRes> getActivityDetails(@Path("id") int id, @Query("token") String token);
 
     @POST(URL_V1 + "/activity/{id}/answer")
     Call<ActivityRes> sendActivityAnswer(@Path("id") String id, @Query("token") String token, @Body ActivityAnswerReq activityAnswerReq);
@@ -96,4 +98,8 @@ public interface ApiInterface {
 
     @POST(URL_V1 + "/notification")
     Call<NotificationDetailRes> sendNotification(@Query("token") String token, @Body SendNotificationReq sendNotificationReq);
+
+    @GET(URL_V1 + "/unitProfile/getAdmin")
+    Call<UnitAdmins> getAdmins(@Query("token") String token);
+
 }

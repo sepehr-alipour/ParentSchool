@@ -6,14 +6,14 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
         app:title="@string/app_name"
         app:titleTextColor="@android:color/white">
 
-    </android.support.v7.widget.Toolbar>
+    </androidx.appcompat.widget.Toolbar>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -35,7 +35,7 @@
                 android:src="@drawable/logo" />
 
 
-            <android.support.v7.widget.AppCompatEditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/edtUsername"
                 style="@style/EditTextStyle"
                 android:layout_width="200dp"
@@ -47,7 +47,7 @@
                 android:paddingTop="50dp"
                 android:text="@string/USER_NAME" />
 
-            <android.support.v7.widget.AppCompatEditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/edtPassword"
                 style="@style/EditTextStyle"
                 android:layout_width="200dp"
@@ -58,7 +58,7 @@
                 android:text="@string/PASSWORD" />
 
 
-            <android.support.v7.widget.AppCompatButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnLogin"
                 style="@style/Base.Widget.AppCompat.Button.Colored"
                 android:layout_width="200dp"

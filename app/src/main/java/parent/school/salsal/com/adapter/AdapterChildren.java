@@ -1,7 +1,7 @@
 package parent.school.salsal.com.adapter;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.PixelCopy;
 import android.view.View;

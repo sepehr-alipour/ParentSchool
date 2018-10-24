@@ -12,17 +12,50 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.activity.ActivityMain" />
-        <activity android:name=".view.activity.ActivityNotificationNew" />
-        <activity android:name=".view.activity.ActivityNotifDetail" />
-        <activity android:name=".view.activity.ActivityEditProfile" />
-        <activity android:name=".view.activity.ActivityActivities" />
-        <activity android:name=".view.activity.ActivityTeacherProfile" />
-        <activity android:name=".view.activity.ActivityResponseActivity" />
-        <activity android:name=".view.activity.ActivityChildren" />
-        <activity android:name=".view.activity.ActivityLogin" />
-        <activity android:name=".view.activity.ActivityDetails" />
-        <activity android:name=".view.activity.ActivitySplash">
+        <activity
+            android:name=".view.activity.ActivityMain"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.ActivityNotificationNew"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.ActivityNotifDetail"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.ActivityEditProfile"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.ActivityActivities"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.ActivityTeacherProfile"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.ActivityResponseActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.ActivityChildren"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.ActivityLogin"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.ActivityDetails"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".view.activity.ActivitySplash"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,11 +64,15 @@
         </activity>
         <activity
             android:name=".view.activity.ActivityLoading"
-            android:launchMode="singleTask"
+            android:configChanges="keyboardHidden|orientation"
+            android:launchMode="singleInstance"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Translucent" />
         <activity
             android:name=".view.activity.ActivitySchools"
-            android:windowSoftInputMode="adjustResize"></activity>
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
     </application>
 
 </manifest>

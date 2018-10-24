@@ -19,7 +19,7 @@
 
             <include layout="@layout/list_item_notification" />
 
-            <android.support.v7.widget.AppCompatEditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/edtResponse"
                 style="@style/EditTextStyle"
                 android:visibility="gone"
@@ -29,7 +29,7 @@
                 android:layout_marginRight="@dimen/space_5_dp"
                 android:hint="متن پاسخ..." />
 
-            <android.support.v7.widget.AppCompatButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSend"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

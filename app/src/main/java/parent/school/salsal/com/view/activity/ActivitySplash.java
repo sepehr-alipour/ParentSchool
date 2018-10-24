@@ -3,7 +3,7 @@ package parent.school.salsal.com.view.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.util.PreferenceManager;

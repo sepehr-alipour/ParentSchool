@@ -23,7 +23,7 @@ public class SendNotificationReq {
     private String message;
     @SerializedName("type")
     private int type;
-    @SerializedName("file_url")
+    @SerializedName("media_id")
     private String fileUrl;
     @SerializedName("recipient_type")
     private String recipientType;

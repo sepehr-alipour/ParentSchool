@@ -1,26 +1,30 @@
 apply plugin: 'com.android.application'
 
 android {
-
-    buildToolsVersion "27.0.3"
-    compileSdkVersion 27
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    buildToolsVersion "28.0.3"
+    compileSdkVersion 28
     defaultConfig {
         applicationId "parent.school.salsal.com"
         minSdkVersion 17
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
     }
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            useProguard true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
-
-            resValue "string", "BASE_URL", "http://192.168.2.124:80"
+            minifyEnabled false
+            resValue "string", "BASE_URL", "http://school-api.isaan.ir:8080"
             resValue "string", "SCHOOL_NAME", "test"
-            resValue "string", "USER_NAME", "parent"
+            resValue "string", "USER_NAME", "parent0"
             resValue "string", "PASSWORD", "123"
 
         }
@@ -28,25 +32,28 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:27.1.1'
-    implementation 'com.android.support:design:27.1.1'
-    implementation 'com.android.support:cardview-v7:27.1.1'
-    implementation 'com.android.support:recyclerview-v7:27.1.1'
-    implementation 'com.android.support:support-v4:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
-    implementation 'com.jakewharton:butterknife:8.8.1'
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.8.0'
+    //todo update to new version
+    annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-SNAPSHOT'
+    annotationProcessor 'androidx.annotation:annotation:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    //todo update to new version
+    implementation 'com.jakewharton:butterknife:9.0.0-SNAPSHOT'
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
-    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.aurelhubert:ahbottomnavigation:2.2.0'
     implementation "com.orhanobut:hawk:2.0.1"
-    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.16'
-    implementation('com.github.bumptech.glide:glide:4.7.1') {
-        exclude group: "com.android.support"
-    }
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
+    implementation 'com.github.bumptech.glide:glide:4.8.0'
 
     compile project(path: ':persiandat')
 }

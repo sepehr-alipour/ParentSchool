@@ -1,14 +1,13 @@
 package parent.school.salsal.com.adapter;
 
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
-import junit.runner.BaseTestRunner;
 
 import java.util.List;
 
@@ -17,6 +16,7 @@ import butterknife.ButterKnife;
 import parent.school.salsal.com.R;
 import parent.school.salsal.com.interfaces.OnDataSelectListener;
 import parent.school.salsal.com.model.ActivityRes;
+import parent.school.salsal.com.util.Utils;
 
 public class AdapterActivities extends RecyclerView.Adapter<AdapterActivities.ViewHolder> {
 
@@ -39,9 +39,10 @@ public class AdapterActivities extends RecyclerView.Adapter<AdapterActivities.Vi
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         final ActivityRes.DataBean itemList = listActivity.get(position);
-        holder.txtDate.setText(itemList.getCreatedAt());
+        holder.txtDate.setText(Utils.convertBirthdayToString(itemList.getCreatedAt()));
         holder.txtDesc.setText(itemList.getDesc());
-        holder.txtExpireDate.setText(itemList.getExpireDate() + "");
+        //todo change to timestamp in server and app
+        holder.txtExpireDate.setText(Utils.convertBirthdayToString(itemList.getExpireDate()));
         holder.txtTitle.setText(itemList.getTitle());
         String[] activityType = holder.txtDate.getContext().getResources().getStringArray(R.array.activity_type);
         switch (itemList.getAtypeId()) {
@@ -53,6 +54,14 @@ public class AdapterActivities extends RecyclerView.Adapter<AdapterActivities.Vi
             case 2:
                 holder.txtType.setText(activityType[1]);
                 holder.txtType.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_action_parent, 0);
+                break;
+            case 3:
+                holder.txtType.setText(activityType[2]);
+                holder.txtType.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_action_home, 0);
+                break;
+            case 4:
+                holder.txtType.setText(activityType[3]);
+                holder.txtType.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_action_quiz, 0);
                 break;
         }
     }
